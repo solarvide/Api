@@ -1,0 +1,15 @@
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\bin\Release\net6.0\testhost.exe
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\bin\Release\net6.0\testhost.dll
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\bin\Release\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\bin\Release\net6.0\Util.deps.json
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\bin\Release\net6.0\Util.dll
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\bin\Release\net6.0\Util.pdb
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\obj\Release\net6.0\Util.csproj.AssemblyReference.cache
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\obj\Release\net6.0\Util.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\obj\Release\net6.0\Util.AssemblyInfoInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\obj\Release\net6.0\Util.AssemblyInfo.cs
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\obj\Release\net6.0\Util.csproj.CoreCompileInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\obj\Release\net6.0\Util.dll
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\obj\Release\net6.0\refint\Util.dll
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\obj\Release\net6.0\Util.pdb
+D:\Documents\Agencia Artilharia\Clientes\Orbits\Projetos\Raffle\Util\obj\Release\net6.0\ref\Util.dll

@@ -1,0 +1,36 @@
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\bin\Debug\net6.0\Domain.deps.json
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\bin\Debug\net6.0\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\bin\Debug\net6.0\Domain.pdb
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\obj\Debug\net6.0\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\obj\Debug\net6.0\refint\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\obj\Debug\net6.0\Domain.pdb
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Domain\obj\Debug\net6.0\ref\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\bin\Debug\net6.0\Domain.deps.json
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\bin\Debug\net6.0\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\bin\Debug\net6.0\Domain.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\obj\Debug\net6.0\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\obj\Debug\net6.0\refint\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\obj\Debug\net6.0\Domain.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Domain\obj\Debug\net6.0\ref\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\bin\Debug\net6.0\Domain.deps.json
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\bin\Debug\net6.0\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\bin\Debug\net6.0\Domain.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\obj\Debug\net6.0\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\obj\Debug\net6.0\refint\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\obj\Debug\net6.0\Domain.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Domain\obj\Debug\net6.0\ref\Domain.dll
