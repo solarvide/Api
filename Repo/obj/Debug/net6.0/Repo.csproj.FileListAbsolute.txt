@@ -1,0 +1,66 @@
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\testhost.exe
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\testhost.dll
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\Repo.deps.json
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\Repo.runtimeconfig.json
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\Repo.pdb
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\Util.dll
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\Domain.pdb
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\bin\Debug\net6.0\Util.pdb
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\Repo.csproj.AssemblyReference.cache
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\Repo.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\Repo.AssemblyInfoInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\Repo.AssemblyInfo.cs
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\Repo.csproj.CoreCompileInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\Repo.csproj.CopyComplete
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\refint\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\Repo.pdb
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\Repo.genruntimeconfig.cache
+D:\Documents\Agencia Artilharia\Clientes\QHSE\API\RecruterApp\Repo\obj\Debug\net6.0\ref\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\testhost.exe
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\testhost.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\Repo.deps.json
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\Repo.runtimeconfig.json
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\Repo.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\Util.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\Domain.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\bin\Debug\net6.0\Util.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\Repo.csproj.AssemblyReference.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\Repo.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\Repo.AssemblyInfoInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\Repo.AssemblyInfo.cs
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\Repo.csproj.CoreCompileInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\Repo.csproj.CopyComplete
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\refint\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\Repo.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\Repo.genruntimeconfig.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\ZionSystemApp\Repo\obj\Debug\net6.0\ref\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\testhost.exe
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\testhost.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\Repo.deps.json
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\Repo.runtimeconfig.json
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\Repo.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\Domain.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\Util.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\Domain.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\bin\Debug\net6.0\Util.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\Repo.csproj.AssemblyReference.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\Repo.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\Repo.AssemblyInfoInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\Repo.AssemblyInfo.cs
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\Repo.csproj.CoreCompileInputs.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\Repo.csproj.CopyComplete
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\refint\Repo.dll
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\Repo.pdb
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\Repo.genruntimeconfig.cache
+D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\Repo\obj\Debug\net6.0\ref\Repo.dll
