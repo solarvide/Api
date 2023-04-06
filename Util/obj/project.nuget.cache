@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yp41pCQ+GjKVEZjkv74YCWlEESg5R3aCPbHxNh7wl1yOe3HwHvia585Jxr/+OEOUs+vNLOw1wXQTZjL+dw+odw==",
+  "dgSpecHash": "LOHreOPlYoEbt3tE9VUqZLR97gNyk32Q0ljRyI+0gG6VKKSjP6hCmMAXtNu1T4DI4xYxOST4sHxo23vuLSRfOA==",
   "success": true,
-  "projectFilePath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Util\\Util.csproj",
+  "projectFilePath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Util\\Util.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonat\\.nuget\\packages\\awssdk.core\\3.7.6.2\\awssdk.core.3.7.6.2.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\awssdk.s3\\3.7.7.17\\awssdk.s3.3.7.7.17.nupkg.sha512",
@@ -116,7 +116,10 @@
     "C:\\Users\\jonat\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\jonat\\.nuget\\packages\\xabe.ffmpeg\\5.1.0\\xabe.ffmpeg.5.1.0.nupkg.sha512"
+    "C:\\Users\\jonat\\.nuget\\packages\\xabe.ffmpeg\\5.1.0\\xabe.ffmpeg.5.1.0.nupkg.sha512",
+    "C:\\Users\\jonat\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.13\\microsoft.aspnetcore.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\jonat\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.13\\microsoft.windowsdesktop.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\jonat\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.13\\microsoft.netcore.app.ref.6.0.13.nupkg.sha512"
   ],
   "logs": []
 }

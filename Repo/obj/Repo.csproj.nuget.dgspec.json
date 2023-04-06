@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Repo\\Repo.csproj": {}
+    "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Repo\\Repo.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Domain\\Domain.csproj": {
+    "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Domain\\Domain.csproj",
+        "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Domain\\obj\\",
+        "outputPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -54,23 +54,37 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Repo\\Repo.csproj": {
+    "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Repo\\Repo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Repo\\Repo.csproj",
+        "projectUniqueName": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Repo\\Repo.csproj",
         "projectName": "Repo",
-        "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Repo\\Repo.csproj",
+        "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Repo\\Repo.csproj",
         "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Repo\\obj\\",
+        "outputPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Repo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -91,11 +105,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Domain\\Domain.csproj"
+              "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Domain\\Domain.csproj"
               },
-              "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Util\\Util.csproj": {
-                "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Util\\Util.csproj"
+              "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Util\\Util.csproj": {
+                "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Util\\Util.csproj"
               }
             }
           }
@@ -142,23 +156,37 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Util\\Util.csproj": {
+    "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Util\\Util.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Util\\Util.csproj",
+        "projectUniqueName": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Util\\Util.csproj",
         "projectName": "Util",
-        "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Util\\Util.csproj",
+        "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Util\\Util.csproj",
         "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Util\\obj\\",
+        "outputPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Util\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -239,12 +267,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
