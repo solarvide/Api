@@ -2,6 +2,7 @@
 
 using Domain;
 using App.DtoUsers;
+using App.Dto.Proposal;
 
 namespace AutoMapper {
     public class MappingProfile : Profile {
@@ -13,6 +14,9 @@ namespace AutoMapper {
             CreateMap<User, UserDefaultResponseDto>();
             CreateMap<User, UserBasicResponseDto>();
             CreateMap<UserType, UserTypeResponseDto>();
+            CreateMap<ProposalResponseDto, Proposal>();
+            CreateMap<Proposal, ProposalResponseDto > ();
+          
         }
     }
 }

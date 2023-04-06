@@ -47,6 +47,15 @@
           }
         }
       },
+      "BouncyCastle/1.8.9": {
+        "type": "package",
+        "compile": {
+          "lib/BouncyCastle.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/BouncyCastle.Crypto.dll": {}
+        }
+      },
       "GoogleAuthenticator/2.4.0": {
         "type": "package",
         "dependencies": {
@@ -74,6 +83,18 @@
           "lib/netstandard2.0/Humanizer.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "iTextSharp/5.5.13.3": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle": "1.8.9"
+        },
+        "compile": {
+          "lib/itextsharp.dll": {}
+        },
+        "runtime": {
+          "lib/itextsharp.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.7": {
@@ -2806,6 +2827,19 @@
         "tools/uninstall.ps1"
       ]
     },
+    "BouncyCastle/1.8.9": {
+      "sha512": "axnBgvdD5n+FnEG6efk/tfKuMFru7R/EoISH9zjh319yb3HD24TEHSAbNN/lTRT2ulOGRxDgOsCjkuk08iwWPg==",
+      "type": "package",
+      "path": "bouncycastle/1.8.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "bouncycastle.1.8.9.nupkg.sha512",
+        "bouncycastle.nuspec",
+        "lib/BouncyCastle.Crypto.dll"
+      ]
+    },
     "GoogleAuthenticator/2.4.0": {
       "sha512": "3QE8YEXo/OKNUjYC5YT9Yv76ah65a7w56zOSw+u/HhjSh2FADyEyG1AhOeslagQbtnd9X+6SOE5VyOsffWlz1w==",
       "type": "package",
@@ -2838,6 +2872,22 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "iTextSharp/5.5.13.3": {
+      "sha512": "vtnMhTEJdZFCkLqaQLjD8aqTBIVKHPrSFuSXnxbLEJlvE/j/l88fvG9wtsejXTmhtErMo0lA9T2LdfdfbwplYw==",
+      "type": "package",
+      "path": "itextsharp/5.5.13.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "gnu-agpl-v3.0.md",
+        "itextsharp.5.5.13.3.nupkg.sha512",
+        "itextsharp.nuspec",
+        "lib/iTextSharp.xml",
+        "lib/itextsharp.dll",
+        "notice.txt"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.7": {
@@ -8358,7 +8408,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.5",
       "Repo >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3",
-      "Util >= 1.0.0"
+      "Util >= 1.0.0",
+      "iTextSharp >= 5.5.13.3"
     ]
   },
   "packageFolders": {
@@ -8368,11 +8419,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\App\\App.csproj",
+      "projectUniqueName": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\App\\App.csproj",
       "projectName": "App",
-      "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\App\\App.csproj",
+      "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\App\\App.csproj",
       "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-      "outputPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\App\\obj\\",
+      "outputPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\App\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8393,14 +8444,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Domain\\Domain.csproj"
+            "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Domain\\Domain.csproj"
             },
-            "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Repo\\Repo.csproj": {
-              "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Repo\\Repo.csproj"
+            "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Repo\\Repo.csproj": {
+              "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Repo\\Repo.csproj"
             },
-            "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Util\\Util.csproj": {
-              "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\BoilerPlate\\App\\Util\\Util.csproj"
+            "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Util\\Util.csproj": {
+              "projectPath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\Util\\Util.csproj"
             }
           }
         }
@@ -8442,6 +8493,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.2.3, )"
+          },
+          "iTextSharp": {
+            "target": "Package",
+            "version": "[5.5.13.3, )"
           }
         },
         "imports": [
@@ -8455,6 +8510,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.13, 6.0.13]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[6.0.13, 6.0.13]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.13, 6.0.13]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.13, 6.0.13]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -8463,8 +8536,30 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'BouncyCastle 1.8.9' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net6.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'iTextSharp 5.5.13.3' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net6.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "iTextSharp",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

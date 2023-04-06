@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\App\obj\Release\net6.0\PubTmp\Out\" />
+  <dbfullsql path="D:\Documents\Agencia Artilharia\Clientes\Fszion\Projetos\Clientes\Solar Vide\App\App\obj\Release\net6.0\PubTmp\EFSQLScripts\Context.Repo.ContextApp.sql" />
+</sitemanifest>

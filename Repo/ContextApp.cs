@@ -2102,6 +2102,8 @@ namespace Context.Repo
             modelBuilder.Entity<User>();
             modelBuilder.Entity<CodeValidation>();
             modelBuilder.Entity<PushNotificationKey>();
+            modelBuilder.Entity<ProposalHistoricEletric>();
+            modelBuilder.Entity<Proposal>();
 
             base.OnModelCreating(modelBuilder);
         }
@@ -2115,5 +2117,7 @@ namespace Context.Repo
         public DbSet<Country> Countries { get; set; }
         public DbSet<CodeValidation> CodeValidations { get; set; }
         public DbSet<PushNotificationKey> PushNotificationKeys { get; set; }
+        public DbSet<ProposalHistoricEletric> ProposalHistoricEletrics { get; set; }
+        public DbSet<Proposal> Proposal { get; set; }
     }
 }

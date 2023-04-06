@@ -14,7 +14,6 @@ using App.Dto.Default;
 using App.DtoUsers;
 using App;
 
-//TODO:: Colocar Companies
 namespace ZionSystemApp.Controllers
 {
     [Route("api/[controller]")]
