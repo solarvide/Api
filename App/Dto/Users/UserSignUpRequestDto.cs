@@ -6,6 +6,7 @@ namespace App.DtoUsers
 {
     public class UserSignUpRequestDto
     {
+        public long CompanyId { get; set; }
         public string Name { get; set; }
 
         public string? SurName { get; set; }

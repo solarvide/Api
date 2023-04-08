@@ -5,10 +5,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repo.Migrations
 {
-    public partial class initial : Migration
+    public partial class INitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Companies",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Distric = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UF = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Companies", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "ConfigurationTags",
                 columns: table => new
@@ -59,6 +81,27 @@ namespace Repo.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Proposal",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    WhatsApp = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Average = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Archive = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Proposal", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserTypes",
                 columns: table => new
                 {
@@ -76,6 +119,29 @@ namespace Repo.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProposalHistoricEletrics",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    proposalId = table.Column<long>(type: "bigint", nullable: false),
+                    Month = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Value = table.Column<decimal>(type: "decimal(18,2)", maxLength: 4000, nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProposalHistoricEletrics", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProposalHistoricEletrics_Proposal_proposalId",
+                        column: x => x.proposalId,
+                        principalTable: "Proposal",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -90,6 +156,7 @@ namespace Repo.Migrations
                     Password = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     EmailValidated = table.Column<bool>(type: "bit", nullable: true),
                     UserTypeId = table.Column<long>(type: "bigint", nullable: false),
+                    CompanyId = table.Column<long>(type: "bigint", nullable: false),
                     PhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TwoFactory = table.Column<bool>(type: "bit", nullable: true),
                     TwoFactorySecret = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -101,6 +168,11 @@ namespace Repo.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Companies_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Companies",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Users_UserTypes_UserTypeId",
                         column: x => x.UserTypeId,
@@ -159,7 +231,8 @@ namespace Repo.Migrations
                 values: new object[,]
                 {
                     { 1L, "default_user_type_id", "default_user_type_id", "1" },
-                    { 2L, "default_user_type_abreviations", "default_user_type_abreviations", "MB" }
+                    { 2L, "default_user_type_abreviations", "default_user_type_abreviations", "MB" },
+                    { 3L, "default_percent_compress", "default_percent_compress", "60" }
                 });
 
             migrationBuilder.InsertData(
@@ -205,8 +278,7 @@ namespace Repo.Migrations
                     { 36L, "KH", false, "Cambodia", 1 },
                     { 37L, "CM", false, "Cameroon", 1 },
                     { 38L, "CA", false, "Canada", 1 },
-                    { 39L, "CV", false, "Cape Verde", 1 },
-                    { 40L, "KY", false, "Cayman Islands", 1 }
+                    { 39L, "CV", false, "Cape Verde", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -214,6 +286,7 @@ namespace Repo.Migrations
                 columns: new[] { "Id", "Abbreviation", "Deleted", "Name", "PhonePrefix" },
                 values: new object[,]
                 {
+                    { 40L, "KY", false, "Cayman Islands", 1 },
                     { 41L, "CF", false, "Central African Republic", 1 },
                     { 42L, "TD", false, "Chad", 1 },
                     { 43L, "CL", false, "Chile", 1 },
@@ -254,8 +327,7 @@ namespace Repo.Migrations
                     { 78L, "GA", false, "Gabon", 1 },
                     { 79L, "GM", false, "Gambia", 1 },
                     { 80L, "GE", false, "Georgia", 1 },
-                    { 81L, "DE", false, "Germany", 1 },
-                    { 82L, "GH", false, "Ghana", 1 }
+                    { 81L, "DE", false, "Germany", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -263,6 +335,7 @@ namespace Repo.Migrations
                 columns: new[] { "Id", "Abbreviation", "Deleted", "Name", "PhonePrefix" },
                 values: new object[,]
                 {
+                    { 82L, "GH", false, "Ghana", 1 },
                     { 83L, "GI", false, "Gibraltar", 1 },
                     { 84L, "GR", false, "Greece", 1 },
                     { 85L, "GL", false, "Greenland", 1 },
@@ -303,8 +376,7 @@ namespace Repo.Migrations
                     { 120L, "LS", false, "Lesotho", 1 },
                     { 121L, "LR", false, "Liberia", 1 },
                     { 122L, "LY", false, "Libyan Arab Jamahiriya", 1 },
-                    { 123L, "LI", false, "Liechtenstein", 1 },
-                    { 124L, "LT", false, "Lithuania", 1 }
+                    { 123L, "LI", false, "Liechtenstein", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -312,6 +384,7 @@ namespace Repo.Migrations
                 columns: new[] { "Id", "Abbreviation", "Deleted", "Name", "PhonePrefix" },
                 values: new object[,]
                 {
+                    { 124L, "LT", false, "Lithuania", 1 },
                     { 125L, "LU", false, "Luxembourg", 1 },
                     { 126L, "MO", false, "Macau", 1 },
                     { 127L, "MK", false, "North Macedonia", 1 },
@@ -352,8 +425,7 @@ namespace Repo.Migrations
                     { 162L, "PK", false, "Pakistan", 1 },
                     { 163L, "PW", false, "Palau", 1 },
                     { 164L, "PA", false, "Panama", 1 },
-                    { 165L, "PG", false, "Papua new Guinea", 1 },
-                    { 166L, "PY", false, "Paraguay", 1 }
+                    { 165L, "PG", false, "Papua new Guinea", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -361,6 +433,7 @@ namespace Repo.Migrations
                 columns: new[] { "Id", "Abbreviation", "Deleted", "Name", "PhonePrefix" },
                 values: new object[,]
                 {
+                    { 166L, "PY", false, "Paraguay", 1 },
                     { 167L, "PE", false, "Peru", 1 },
                     { 168L, "PH", false, "Philippines", 1 },
                     { 169L, "PN", false, "Pitcairn", 1 },
@@ -401,8 +474,7 @@ namespace Repo.Migrations
                     { 204L, "CH", false, "Switzerland", 1 },
                     { 205L, "SY", false, "Syrian Arab Republic", 1 },
                     { 206L, "TW", false, "Taiwan, Province of China", 1 },
-                    { 207L, "TJ", false, "Tajikistan", 1 },
-                    { 208L, "TZ", false, "Tanzania, United Republic of", 1 }
+                    { 207L, "TJ", false, "Tajikistan", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -410,6 +482,7 @@ namespace Repo.Migrations
                 columns: new[] { "Id", "Abbreviation", "Deleted", "Name", "PhonePrefix" },
                 values: new object[,]
                 {
+                    { 208L, "TZ", false, "Tanzania, United Republic of", 1 },
                     { 209L, "TH", false, "Thailand", 1 },
                     { 210L, "TG", false, "Togo", 1 },
                     { 211L, "TK", false, "Tokelau", 1 },
@@ -450,8 +523,7 @@ namespace Repo.Migrations
                     { 246L, "AX", false, "Åland Islands", 1 },
                     { 247L, "CW", false, "Curaçao", 1 },
                     { 248L, "SM", false, "Saint Martin", 1 },
-                    { 249L, "AN", false, "Bonaire", 1 },
-                    { 250L, "AQ", false, "Antartica", 1 }
+                    { 249L, "AN", false, "Bonaire", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -459,6 +531,7 @@ namespace Repo.Migrations
                 columns: new[] { "Id", "Abbreviation", "Deleted", "Name", "PhonePrefix" },
                 values: new object[,]
                 {
+                    { 250L, "AQ", false, "Antartica", 1 },
                     { 251L, "AU", false, "Heard Island and McDonald Islands", 1 },
                     { 252L, "FR", false, "Saint-Barthélemy", 1 },
                     { 253L, "SM", false, "Saint Martin", 1 },
@@ -470,8 +543,8 @@ namespace Repo.Migrations
                 columns: new[] { "Id", "Abbreviation", "CreatedOn", "Deleted", "Name", "UpdatedOn" },
                 values: new object[,]
                 {
-                    { 1L, "MB", new DateTime(2023, 1, 17, 19, 13, 8, 242, DateTimeKind.Local).AddTicks(9148), false, "Membro", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2L, "ADM", new DateTime(2023, 1, 17, 19, 13, 8, 242, DateTimeKind.Local).AddTicks(9151), false, "Adminitrator", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1L, "MB", new DateTime(2023, 4, 8, 19, 34, 54, 850, DateTimeKind.Local).AddTicks(3374), false, "Membro", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2L, "ADM", new DateTime(2023, 4, 8, 19, 34, 54, 850, DateTimeKind.Local).AddTicks(3380), false, "Adminitrator", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -480,9 +553,19 @@ namespace Repo.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProposalHistoricEletrics_proposalId",
+                table: "ProposalHistoricEletrics",
+                column: "proposalId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PushNotificationKeys_UserId",
                 table: "PushNotificationKeys",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_CompanyId",
+                table: "Users",
+                column: "CompanyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_UserTypeId",
@@ -505,10 +588,19 @@ namespace Repo.Migrations
                 name: "LanguageTags");
 
             migrationBuilder.DropTable(
+                name: "ProposalHistoricEletrics");
+
+            migrationBuilder.DropTable(
                 name: "PushNotificationKeys");
 
             migrationBuilder.DropTable(
+                name: "Proposal");
+
+            migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Companies");
 
             migrationBuilder.DropTable(
                 name: "UserTypes");

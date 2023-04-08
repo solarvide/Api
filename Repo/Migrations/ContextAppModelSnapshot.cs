@@ -55,6 +55,56 @@ namespace Repo.Migrations
                     b.ToTable("CodeValidations");
                 });
 
+            modelBuilder.Entity("Domain.Company", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Distric")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UF")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
+                });
+
             modelBuilder.Entity("Domain.ConfigurationTag", b =>
                 {
                     b.Property<long>("Id")
@@ -2270,10 +2320,9 @@ namespace Repo.Migrations
                     b.Property<DateTime>("UpdatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Value")
-                        .IsRequired()
+                    b.Property<decimal>("Value")
                         .HasMaxLength(4000)
-                        .HasColumnType("nvarchar(4000)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<long>("proposalId")
                         .HasColumnType("bigint");
@@ -2331,6 +2380,9 @@ namespace Repo.Migrations
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
 
+                    b.Property<long>("CompanyId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -2387,6 +2439,8 @@ namespace Repo.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CompanyId");
+
                     b.HasIndex("UserTypeId");
 
                     b.ToTable("Users");
@@ -2428,7 +2482,7 @@ namespace Repo.Migrations
                         {
                             Id = 1L,
                             Abbreviation = "MB",
-                            CreatedOn = new DateTime(2023, 4, 6, 0, 46, 34, 316, DateTimeKind.Local).AddTicks(9883),
+                            CreatedOn = new DateTime(2023, 4, 8, 19, 34, 54, 850, DateTimeKind.Local).AddTicks(3374),
                             Deleted = false,
                             Name = "Membro",
                             UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -2437,7 +2491,7 @@ namespace Repo.Migrations
                         {
                             Id = 2L,
                             Abbreviation = "ADM",
-                            CreatedOn = new DateTime(2023, 4, 6, 0, 46, 34, 316, DateTimeKind.Local).AddTicks(9885),
+                            CreatedOn = new DateTime(2023, 4, 8, 19, 34, 54, 850, DateTimeKind.Local).AddTicks(3380),
                             Deleted = false,
                             Name = "Adminitrator",
                             UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -2476,10 +2530,17 @@ namespace Repo.Migrations
 
             modelBuilder.Entity("Domain.User", b =>
                 {
+                    b.HasOne("Domain.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .IsRequired();
+
                     b.HasOne("Domain.UserType", "UserType")
                         .WithMany()
                         .HasForeignKey("UserTypeId")
                         .IsRequired();
+
+                    b.Navigation("Company");
 
                     b.Navigation("UserType");
                 });

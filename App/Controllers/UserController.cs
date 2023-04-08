@@ -112,6 +112,7 @@ namespace ZionSystemApp.Controllers
             {
                 var user = _context.Users
                     .Include(o => o.UserType)
+                    .Include(o => o.Company)
                     .Where(o => o.Id == userId)
                     .FirstOrDefault();
 
@@ -136,7 +137,7 @@ namespace ZionSystemApp.Controllers
         }
 
 
-        [HttpPost("List/")]
+        [HttpGet("List/")]
         public ActionResult<List<UserDefaultResponseDto>> ListUser(DefaultRequestDto request)
         {
             try
@@ -171,6 +172,7 @@ namespace ZionSystemApp.Controllers
             }
 
         }
+
 
 
         [HttpPut("{userId}")]

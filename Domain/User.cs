@@ -37,6 +37,11 @@ namespace Domain
         [Required]
         public UserType UserType { get; set; }
         public long UserTypeId { get; set; }
+
+        [ForeignKey("CompanyId")]
+        [Required]
+        public Company Company  { get; set; }
+        public long CompanyId { get; set; }
         public string? PhotoUrl { get; set; }
         public bool? TwoFactory { get; set; }
         public string? TwoFactorySecret { get; set; }

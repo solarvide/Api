@@ -53,11 +53,19 @@ namespace Context.Repo
                   new UserType
                   {
                       Id = 2,
-                      Abbreviation = "ADM",
-                      Name = "Adminitrator",
+                      Abbreviation = "SADM",
+                      Name = "Super Administrador",
                       CreatedOn = DateTime.Now,
                       Deleted = false
-                  });
+                  },
+                   new UserType
+                   {
+                       Id = 3,
+                       Abbreviation = "Adm",
+                       Name = "Adminitrator",
+                       CreatedOn = DateTime.Now,
+                       Deleted = false
+                   });
             modelBuilder.Entity<Country>().HasData(
                 new Country
                 {
@@ -2102,6 +2110,10 @@ namespace Context.Repo
             modelBuilder.Entity<User>();
             modelBuilder.Entity<CodeValidation>();
             modelBuilder.Entity<PushNotificationKey>();
+            modelBuilder.Entity<Company>();
+
+
+
             modelBuilder.Entity<ProposalHistoricEletric>();
             modelBuilder.Entity<Proposal>();
 
@@ -2117,6 +2129,11 @@ namespace Context.Repo
         public DbSet<Country> Countries { get; set; }
         public DbSet<CodeValidation> CodeValidations { get; set; }
         public DbSet<PushNotificationKey> PushNotificationKeys { get; set; }
+        public DbSet<Company> Companies { get; set; }
+
+
+
+
         public DbSet<ProposalHistoricEletric> ProposalHistoricEletrics { get; set; }
         public DbSet<Proposal> Proposal { get; set; }
     }
