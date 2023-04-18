@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Repo.Migrations
 {
     [DbContext(typeof(ContextApp))]
-    [Migration("20230408223455_INitial")]
-    partial class INitial
+    [Migration("20230418213415_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -147,7 +147,7 @@ namespace Repo.Migrations
                             Id = 2L,
                             Description = "default_user_type_abreviations",
                             Tag = "default_user_type_abreviations",
-                            Value = "MB"
+                            Value = "RP"
                         },
                         new
                         {
@@ -2483,19 +2483,28 @@ namespace Repo.Migrations
                         new
                         {
                             Id = 1L,
-                            Abbreviation = "MB",
-                            CreatedOn = new DateTime(2023, 4, 8, 19, 34, 54, 850, DateTimeKind.Local).AddTicks(3374),
+                            Abbreviation = "SADM",
+                            CreatedOn = new DateTime(2023, 4, 18, 18, 34, 15, 181, DateTimeKind.Local).AddTicks(6652),
                             Deleted = false,
-                            Name = "Membro",
+                            Name = "Super Admin",
                             UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2L,
-                            Abbreviation = "ADM",
-                            CreatedOn = new DateTime(2023, 4, 8, 19, 34, 54, 850, DateTimeKind.Local).AddTicks(3380),
+                            Abbreviation = "RP",
+                            CreatedOn = new DateTime(2023, 4, 18, 18, 34, 15, 181, DateTimeKind.Local).AddTicks(6809),
                             Deleted = false,
-                            Name = "Adminitrator",
+                            Name = "Representante",
+                            UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Abbreviation = "ADMF",
+                            CreatedOn = new DateTime(2023, 4, 18, 18, 34, 15, 181, DateTimeKind.Local).AddTicks(6810),
+                            Deleted = false,
+                            Name = "Administrador Filial",
                             UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });

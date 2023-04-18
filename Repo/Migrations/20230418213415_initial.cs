@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repo.Migrations
 {
-    public partial class INitial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -231,7 +231,7 @@ namespace Repo.Migrations
                 values: new object[,]
                 {
                     { 1L, "default_user_type_id", "default_user_type_id", "1" },
-                    { 2L, "default_user_type_abreviations", "default_user_type_abreviations", "MB" },
+                    { 2L, "default_user_type_abreviations", "default_user_type_abreviations", "RP" },
                     { 3L, "default_percent_compress", "default_percent_compress", "60" }
                 });
 
@@ -543,8 +543,9 @@ namespace Repo.Migrations
                 columns: new[] { "Id", "Abbreviation", "CreatedOn", "Deleted", "Name", "UpdatedOn" },
                 values: new object[,]
                 {
-                    { 1L, "MB", new DateTime(2023, 4, 8, 19, 34, 54, 850, DateTimeKind.Local).AddTicks(3374), false, "Membro", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2L, "ADM", new DateTime(2023, 4, 8, 19, 34, 54, 850, DateTimeKind.Local).AddTicks(3380), false, "Adminitrator", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1L, "SADM", new DateTime(2023, 4, 18, 18, 34, 15, 181, DateTimeKind.Local).AddTicks(6652), false, "Super Admin", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2L, "RP", new DateTime(2023, 4, 18, 18, 34, 15, 181, DateTimeKind.Local).AddTicks(6809), false, "Representante", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3L, "ADMF", new DateTime(2023, 4, 18, 18, 34, 15, 181, DateTimeKind.Local).AddTicks(6810), false, "Administrador Filial", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.CreateIndex(

@@ -26,8 +26,6 @@ namespace App.DtoUsers {
 
         public bool? TwoFactory { get; set; }
         public CompanyResponseBasicDto Company { get; set; }
-
-        [JsonIgnore]
         public UserTypeResponseDto UserType { get; set; }
 
 

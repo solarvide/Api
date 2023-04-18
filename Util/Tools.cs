@@ -156,13 +156,14 @@ namespace Util {
             throw new NotImplementedException();
         }
 
-        public static TokenBuilded TokenGenerate(object objectUser, long id, SigningConfigurations signingConfigurations, TokenConfigurations tokenConfigurations) {
+        public static TokenBuilded TokenGenerate(object objectUser, long id,long company, SigningConfigurations signingConfigurations, TokenConfigurations tokenConfigurations) {
 
             var tokenUserDto = new TokenObjDto {
                 Username = GetPropertyValue(objectUser, "Email").ToString(),
                 Name = GetPropertyValue(objectUser, "Name").ToString(),
                 Type = Convert.ToInt64(GetPropertyValue(objectUser, "UserTypeId")),
-                uID = id
+                uID = id,
+                Company = company
             };
 
             ClaimsIdentity identity = new ClaimsIdentity(

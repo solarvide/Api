@@ -3,10 +3,12 @@
 using Domain;
 using App.DtoUsers;
 using App.Dto.Proposal;
+using App.Dto.Company;
 
 namespace AutoMapper {
     public class MappingProfile : Profile {
         public MappingProfile() {
+            CreateMap<Company, CompanyResponseBasicDto>();
             CreateMap<UserDefaultRequestDto, User>();
             CreateMap<UserUpdateDefaultRequestDto, User>();
             CreateMap<User, UserUpdateDefaultRequestDto>();

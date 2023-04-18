@@ -39,9 +39,6 @@ namespace App.DtoUsers
         public string? PublicIp { get; set; }
         public string? PhotoUrl { get; set; }
 
-        [JsonIgnore]
-        public string? Pincode { get; set; }
-
     }
 
 }

@@ -54,6 +54,17 @@ namespace ZionSystemApp.Controllers
             ProjectMailSender.Send(oUser.Email, subject, title, message, oUser.Name, Request);
         }
 
+        private async Task SendDelectAccountEmail(User oUser, string code)
+        {
+            string subject = Translator.Transl("mail_user_delete_subject", "Delete Account", Request);
+            string title = Translator.Transl("mail_user_delete_title", "Delete Account procedure", Request);
+            string message = Translator.Transl("mail_user_delete_message", "You received this message because you requested to delete your account.<br/></br>This is a code for delete your account</br><br/><br/><strong>{0}</strong>", code);
+
+            message = string.Format(message, code);
+
+            ProjectMailSender.Send(oUser.Email, subject, title, message, oUser.Name, Request);
+        }
+
 
         protected bool EmailDisponibleCheck(UserEmailDisponibleRequestDto request)
         {
@@ -137,44 +148,6 @@ namespace ZionSystemApp.Controllers
         }
 
 
-        [HttpGet("List/")]
-        public ActionResult<List<UserDefaultResponseDto>> ListUser(DefaultRequestDto request)
-        {
-            try
-            {
-                // pagination
-                request.QtyByPage = request.QtyByPage == 0 ? 99 : request.QtyByPage;
-                request.Page = request.Page == 0 ? 1 : request.Page;
-                request.Skip = (request.Page - 1) * request.QtyByPage;
-
-                var query = _context.Users
-                    .Include(o => o.UserType)
-                    .Where(o => !o.Deleted && (string.IsNullOrEmpty(request.Filter) || (o.Name.Contains(request.Filter) || o.SurName.Contains(request.Filter) || o.Email.Contains(request.Filter))))
-                    .OrderBy(o => o.Name);
-
-                int totalList = query.Count();
-                var result = query.Skip(request.Skip).Take(request.QtyByPage).ToList();
-                double totalPage = Math.Ceiling(totalList / (double)request.QtyByPage);
-
-                // response
-                var usersMapped = _mapper.Map<IEnumerable<User>, IEnumerable<UserDefaultResponseDto>>(result);
-
-                return Ok(new { TotalRegister = totalList, TotalPage = totalPage, BaseUrlimage = _settingsApp.AwsS3.BaseUrlS3, Data = usersMapped });
-            }
-            catch (ExceptionControlled ex)
-            {
-                return BadRequest(ex.ResponseToJson());
-            }
-            catch (Exception ex)
-            {
-
-                return BadRequest(ExceptionControlled.ResponseToJson(ex));
-            }
-
-        }
-
-
-
         [HttpPut("{userId}")]
         public async Task<ActionResult> UpdateUser(long userId, UserUpdateDefaultRequestDto request)
         {
@@ -249,6 +222,13 @@ namespace ZionSystemApp.Controllers
 
                 var checkDocnumber = _context.Users.Where(o => o.DocNumber == document).FirstOrDefault();
 
+                var checkCompany = _context.Companies.Where(o => o.Id == request.CompanyId).FirstOrDefault();
+
+                if(checkCompany == null)
+                {
+                    throw new ExceptionControlled("Company Invalid ", false, false);
+                }
+
                 if (checkDocnumber != null)
                 {
                     string msg1 = Translator.Transl("docnumber_check_msg", "The document number entered is already in use.", Request);
@@ -270,11 +250,11 @@ namespace ZionSystemApp.Controllers
                     var imgUrl = await Tools.UploadFileToS3(_settingsApp.AwsS3.KeyS3, _settingsApp.AwsS3.SecretKeyS3, _settingsApp.AwsS3.BucketName, request.PhotoUrl, true, Convert.ToInt32(ConfigTag.GetValue("default_percent_compress")));
                     request.PhotoUrl = imgUrl;
                 }
-                //TODO: CRIAR ROTINA PARA CRIAÇÃO DE CODIGO ESPERIMENTAL
-                var recomendationCode = Tools.RandomString(8);
+             
+              
 
                 var oUser = _mapper.Map<UserSignUpRequestDto, User>(request);
-                oUser.PinCode = Guid.NewGuid().GetHashCode().ToString();
+              
 
 
                 if (!string.IsNullOrWhiteSpace(request.PushNotificationKey))
@@ -308,8 +288,7 @@ namespace ZionSystemApp.Controllers
                 var resultMapped = new ContainedResponseUserDto()
                 {
                     User = _mapper.Map<User, UserDefaultResponseDto>(oUser),
-                    UserTypeId = ConfigTag.GetValue("default_user_type_abreviations"),
-                    Token = Tools.TokenGenerate(oUser, oUser.Id, signingConfigurations, tokenConfigurations)
+                    Token = Tools.TokenGenerate(oUser, oUser.Id,oUser.CompanyId, signingConfigurations, tokenConfigurations)
                 };
 
                 return Ok(resultMapped);
@@ -335,6 +314,7 @@ namespace ZionSystemApp.Controllers
                 string senhaCritografada = Tools.MD5Hash(request.Password.Trim());
                 var oUser = _context.Users
                    .Include(o => o.UserType)
+                   .Include(o=>o.Company)
                    .Include(o => o.PushNotificationKeys)
                    .Where(o => !o.Deleted && o.Email.Trim() == request.Email.Trim() && o.Password == senhaCritografada).FirstOrDefault();
 
@@ -368,8 +348,7 @@ namespace ZionSystemApp.Controllers
                 var resultMapped = new ContainedResponseUserDto()
                 {
                     User = _mapper.Map<User, UserDefaultResponseDto>(oUser),
-                    UserTypeId = oUser.UserType.Abbreviation,
-                    Token = Tools.TokenGenerate(oUser, oUser.Id, signingConfigurations, tokenConfigurations)
+                    Token = Tools.TokenGenerate(oUser, oUser.Id,oUser.CompanyId,signingConfigurations, tokenConfigurations)
                 };
 
                 return Ok(resultMapped);
@@ -556,7 +535,7 @@ namespace ZionSystemApp.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpGet("recoverPassword/{email}")]
-        public async Task<IActionResult> RecoverPassword(string email, long clubId)
+        public async Task<IActionResult> RecoverPassword(string email)
         {
             try
             {
@@ -648,22 +627,71 @@ namespace ZionSystemApp.Controllers
         }
 
 
-        [HttpDelete("{userId}")]
-        public async Task<ActionResult> Delete(long userId)
+        [HttpDelete]
+        public async Task<ActionResult> Delete(UserDeleteAccountRequestDto request)
+        {
+            var userId = Tools.TokenGetId(Request);
+            User oUser = _context.Users.Include(o => o.CodeValidations).Where(o => !o.Deleted && o.Id == userId && o.CodeValidations.Any(x => x.ValidationCode == request.Code)).FirstOrDefault();
+
+            if (oUser == null)
+            {
+                string msg1 = Translator.Transl("deleteaccount_notfound_msg", "This code not valid.", Request);
+                string msg2 = Translator.Transl("deleteaccount_notfound_title", "User not found", Request);
+                throw new ExceptionControlled(msg1, msg2);
+            }
+
+            int validationCode = DateTime.Compare(oUser.CodeValidations.LastOrDefault().ExpirationDate, DateTime.Now);
+            if (validationCode <= 0)
+            {
+                string msg1 = Translator.Transl("emailverify_wrongcode_msg", "For some reason the code could not be confirmed. Please make sure you typed it correctly and try again.", Request);
+                string msg2 = Translator.Transl("emailverify_wrongcpde_title", "Code does not match validation", Request);
+                throw new ExceptionControlled(msg1, msg2);
+            }
+
+            oUser.Deleted = true; 
+
+            oUser.UpdatedOn = DateTime.Now;
+
+            _context.Entry(oUser).State = EntityState.Modified;
+
+            _context.Remove(oUser.CodeValidations.FirstOrDefault());
+
+            await _context.SaveChangesAsync();
+
+            return Ok(true);
+        }
+
+
+
+
+        [HttpGet("DeleteCode")]
+        public async Task<ActionResult> DeleteCode()
         {
             try
             {
-                var user = _context.Users.Where(o => o.Id == userId).FirstOrDefault();
+                var userId = Tools.TokenGetId(Request);
+                var oUser = _context.Users.Where(o => o.Id == userId).FirstOrDefault();
 
-                if (user == null)
+                if (oUser == null)
                     throw new ExceptionControlled("User not found", false, false);
 
-                user.Deleted = true;
 
-                _context.Update(user);
-                _context.SaveChanges();
+                string code = new Random().Next(10000000, 90999999).ToString();
 
-                return Ok();
+                oUser.Password = Tools.MD5Hash(code);
+                _context.Update(oUser);
+
+                oUser.CodeValidations.Add(new CodeValidation()
+                {
+                    CreatedOn = DateTime.Now,
+                    ExpirationDate = DateTime.Now.AddDays(1),
+                    ValidationCode = code,
+                    CodeType = "Delete Account"
+                });
+
+                SendDelectAccountEmail(oUser, code);
+                await _context.SaveChangesAsync();
+                return Ok(true);
 
             }
             catch (ExceptionControlled ex)

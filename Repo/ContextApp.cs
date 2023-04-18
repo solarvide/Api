@@ -31,7 +31,7 @@ namespace Context.Repo
                     Id = 2,
                     Tag = "default_user_type_abreviations",
                     Description = "default_user_type_abreviations",
-                    Value = "MB",
+                    Value = "RP",
                 },
                 new ConfigurationTag
                 {
@@ -45,24 +45,24 @@ namespace Context.Repo
                 new UserType
                 {
                     Id = 1,
-                    Abbreviation = "MB",
-                    Name = "Membro",
+                    Abbreviation = "SADM",
+                    Name = "Super Admin",
                     CreatedOn = DateTime.Now,
                     Deleted = false
                 },
                   new UserType
                   {
                       Id = 2,
-                      Abbreviation = "SADM",
-                      Name = "Super Administrador",
+                      Abbreviation = "RP",
+                      Name = "Representante",
                       CreatedOn = DateTime.Now,
                       Deleted = false
                   },
                    new UserType
                    {
                        Id = 3,
-                       Abbreviation = "Adm",
-                       Name = "Adminitrator",
+                       Abbreviation = "ADMF",
+                       Name = "Administrador Filial",
                        CreatedOn = DateTime.Now,
                        Deleted = false
                    });

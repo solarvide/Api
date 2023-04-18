@@ -45,7 +45,6 @@ namespace Domain
         public string? PhotoUrl { get; set; }
         public bool? TwoFactory { get; set; }
         public string? TwoFactorySecret { get; set; }
-        public string? PinCode { get; set; }
         public virtual ICollection<CodeValidation> CodeValidations { get; set; }
     }
 }
