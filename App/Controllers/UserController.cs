@@ -205,6 +205,7 @@ namespace ZionSystemApp.Controllers
         }
 
 
+  
         [AllowAnonymous]
         [HttpPost("SignUp")]
         public async Task<ActionResult<UserSessionResponseDto>> SignUp([FromBody] UserSignUpRequestDto request, [FromServices] SigningConfigurations signingConfigurations, [FromServices] TokenConfigurations tokenConfigurations)
@@ -245,17 +246,23 @@ namespace ZionSystemApp.Controllers
                     throw new ExceptionControlled(msg1, msg2);
                 }
 
+                if(request.UploadDoc !=null)
+                {
+                    var docimgUrl = await Tools.UploadFileToS3(_settingsApp.AwsS3.KeyS3, _settingsApp.AwsS3.SecretKeyS3, _settingsApp.AwsS3.BucketName, request.UploadDoc, true, Convert.ToInt32(ConfigTag.GetValue("default_percent_compress")));
+                    request.UploadDoc = docimgUrl;
+
+                }
+
                 if (request.PhotoUrl != null)
                 {
                     var imgUrl = await Tools.UploadFileToS3(_settingsApp.AwsS3.KeyS3, _settingsApp.AwsS3.SecretKeyS3, _settingsApp.AwsS3.BucketName, request.PhotoUrl, true, Convert.ToInt32(ConfigTag.GetValue("default_percent_compress")));
                     request.PhotoUrl = imgUrl;
                 }
              
-              
 
                 var oUser = _mapper.Map<UserSignUpRequestDto, User>(request);
-              
 
+                oUser.Status = 0;
 
                 if (!string.IsNullOrWhiteSpace(request.PushNotificationKey))
                 {
@@ -278,6 +285,7 @@ namespace ZionSystemApp.Controllers
                     ValidationCode = code,
                     CodeType = "SingUp"
                 });
+
                 _context.Users.Add(oUser);
 
                 await _context.SaveChangesAsync();
@@ -318,9 +326,25 @@ namespace ZionSystemApp.Controllers
                    .Include(o => o.PushNotificationKeys)
                    .Where(o => !o.Deleted && o.Email.Trim() == request.Email.Trim() && o.Password == senhaCritografada).FirstOrDefault();
 
-                var msg1 = Translator.Transl("user_signin_email_error_msg", "Your email or password do not match. Make sure you typed it correctly.", Request);
                 var msg2 = Translator.Transl("user_signin_email_error_title", "Invalid credencials", Request);
-                if (oUser is null) throw new ExceptionControlled(msg1, msg2);
+                var msg1 = Translator.Transl("user_signin_email_error_msg", "Your email or password do not match. Make sure you typed it correctly.", Request);
+                if (oUser is null)
+                {
+                    throw new ExceptionControlled(msg1, msg2);
+                }
+                switch (oUser.Status)
+                {
+                    case 0:
+                        var msg = Translator.Transl("user_signin_status_error_msg", "Your registration is still pending approval", Request);
+                        throw new ExceptionControlled(msg, msg2);
+                        break;
+                    case 2:
+                        var msg_ = Translator.Transl("user_signin_status_error_msg", "Your registration is still pending approval", Request);
+                        throw new ExceptionControlled(msg_, msg2);
+                        break;
+                    default:
+                        break;
+                }
 
                 //Registrar Push Notification Token se enviado
                 if (!String.IsNullOrWhiteSpace(request.PushNotificationToken))
@@ -397,7 +421,7 @@ namespace ZionSystemApp.Controllers
 
                 await _context.SaveChangesAsync();
 
-                return Ok("Password Change");
+                return Ok();
             }
             catch (ExceptionControlled e)
             {

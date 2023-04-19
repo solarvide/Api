@@ -9,6 +9,7 @@ namespace AutoMapper {
     public class MappingProfile : Profile {
         public MappingProfile() {
             CreateMap<Company, CompanyResponseBasicDto>();
+            CreateMap<Company, CompanyCitiesResponseDto>();
             CreateMap<UserDefaultRequestDto, User>();
             CreateMap<UserUpdateDefaultRequestDto, User>();
             CreateMap<User, UserUpdateDefaultRequestDto>();
