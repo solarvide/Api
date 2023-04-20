@@ -2114,6 +2114,7 @@ namespace Context.Repo
             modelBuilder.Entity<ProposalHistoricEletric>();
             modelBuilder.Entity<Scheduler>();
             modelBuilder.Entity<Hierarchy>();
+            modelBuilder.Entity<FAQ>();
 
             modelBuilder.Entity<Proposal>();
 
@@ -2132,6 +2133,7 @@ namespace Context.Repo
         public DbSet<Company> Companies { get; set; }
         public DbSet<Scheduler> Schedulers { get; set; }
         public DbSet<Hierarchy> Hierarchies { get; set; }
+        public DbSet<FAQ> FAQs { get; set; }
 
 
 

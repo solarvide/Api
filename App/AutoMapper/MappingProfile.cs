@@ -6,6 +6,7 @@ using App.Dto.Proposal;
 using App.Dto.Company;
 using App.Dto.Scheduler;
 using App.Dto.Users;
+using APP.Dto.FAQ;
 
 namespace AutoMapper {
     public class MappingProfile : Profile {
@@ -14,6 +15,8 @@ namespace AutoMapper {
             CreateMap<Company, CompanyCitiesResponseDto>();
             CreateMap<SchedulerRequestDto, Scheduler>();
             CreateMap<Scheduler, SchedulerResponseDto>();
+            CreateMap<FAQ, FAQListResponseDto>();
+            CreateMap<FAQDefaultRequestDto, FAQ>();
            
             CreateMap<UserDefaultRequestDto, User>();
             CreateMap<UserUpdateDefaultRequestDto, User>();
