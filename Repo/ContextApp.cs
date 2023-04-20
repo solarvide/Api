@@ -2115,6 +2115,8 @@ namespace Context.Repo
             modelBuilder.Entity<Scheduler>();
             modelBuilder.Entity<Hierarchy>();
             modelBuilder.Entity<FAQ>();
+            modelBuilder.Entity<CategoryBlog>();
+            modelBuilder.Entity<Blog>();
 
             modelBuilder.Entity<Proposal>();
 
@@ -2134,6 +2136,8 @@ namespace Context.Repo
         public DbSet<Scheduler> Schedulers { get; set; }
         public DbSet<Hierarchy> Hierarchies { get; set; }
         public DbSet<FAQ> FAQs { get; set; }
+        public DbSet<CategoryBlog> CategoriesBlog { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
 
 
 
