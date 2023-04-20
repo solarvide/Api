@@ -24,7 +24,7 @@ namespace Context.Repo
                     Id = 1,
                     Tag = "default_user_type_id",
                     Description = "default_user_type_id",
-                    Value = "1",
+                    Value = "2",
                 },
                 new ConfigurationTag
                 {
@@ -2111,10 +2111,10 @@ namespace Context.Repo
             modelBuilder.Entity<CodeValidation>();
             modelBuilder.Entity<PushNotificationKey>();
             modelBuilder.Entity<Company>();
-
-
-
             modelBuilder.Entity<ProposalHistoricEletric>();
+            modelBuilder.Entity<Scheduler>();
+            modelBuilder.Entity<Hierarchy>();
+
             modelBuilder.Entity<Proposal>();
 
             base.OnModelCreating(modelBuilder);
@@ -2130,6 +2130,8 @@ namespace Context.Repo
         public DbSet<CodeValidation> CodeValidations { get; set; }
         public DbSet<PushNotificationKey> PushNotificationKeys { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Scheduler> Schedulers { get; set; }
+        public DbSet<Hierarchy> Hierarchies { get; set; }
 
 
 

@@ -30,14 +30,26 @@ using System.Globalization;
 using Xabe.FFmpeg;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Util {
+namespace Util
+{
 
-    public class Tools {
+    public class Tools
+    {
+        public class UserData
+        {
+            public int uID { get; set; }
+            public string Username { get; set; }
+            public string Name { get; set; }
+            public int Type { get; set; }
+            public int Company { get; set; }
+        }
         static Configuration _configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-        public static string GetAppSetting(string key) {
+        public static string GetAppSetting(string key)
+        {
             KeyValueConfigurationElement element = _configuration.AppSettings.Settings[key];
-            if (element != null) {
+            if (element != null)
+            {
                 string value = element.Value;
                 if (!string.IsNullOrEmpty(value))
                     return value;
@@ -45,19 +57,24 @@ namespace Util {
             return string.Empty;
         }
 
-        public static Task SendEmailAsync(string emailTo, string subject, string message, string title, string hello, string userFirstName, string team, string rodapePreMail, string socialMedia, string accessWebSite) {
-            try {
+        public static Task SendEmailAsync(string emailTo, string subject, string message, string title, string hello, string userFirstName, string team, string rodapePreMail, string socialMedia, string accessWebSite)
+        {
+            try
+            {
                 //EmailTools.SendEmailExecute(emailTo, subject, message, title, hello, userFirstName, team, rodapePreMail, socialMedia, accessWebSite).Wait();
                 EmailTools.SendEmailExecute(emailTo, subject, message, title, hello, userFirstName, team, rodapePreMail, socialMedia, accessWebSite);
                 return Task.FromResult(0);
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 throw;
             }
         }
 
-        public static async Task<string> Notification(string title, string mensage, string pushKey) {
-            try {
+        public static async Task<string> Notification(string title, string mensage, string pushKey)
+        {
+            try
+            {
                 RestClient restClient = new RestClient("https://exp.host");
                 JObject jobject = new JObject();
 
@@ -75,25 +92,29 @@ namespace Util {
                 IRestResponse restResponse = restClient.Execute(restRequest);
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 return "erro";
             }
 
             return "";
         }
 
-        public static string GerarSenhaAleatoria(int size = 7) {
+        public static string GerarSenhaAleatoria(int size = 7)
+        {
             string chars = "ABCDEFGHJKLMNPRSTUVWXYZ23456789";
             string pass = "";
             Random random = new Random();
-            for (int f = 0; f < size; f++) {
+            for (int f = 0; f < size; f++)
+            {
                 pass = pass + chars.Substring(random.Next(0, chars.Length - 1), 1);
             }
 
             return pass;
         }
 
-        public static string MD5Hash(string text) {
+        public static string MD5Hash(string text)
+        {
             MD5 md5 = new MD5CryptoServiceProvider();
 
             //compute hash from the bytes of text  
@@ -103,7 +124,8 @@ namespace Util {
             byte[] result = md5.Hash;
 
             StringBuilder strBuilder = new StringBuilder();
-            for (int i = 0; i < result.Length; i++) {
+            for (int i = 0; i < result.Length; i++)
+            {
                 //change it into 2 hexadecimal digits  
                 //for each byte  
                 strBuilder.Append(result[i].ToString("x2"));
@@ -112,17 +134,22 @@ namespace Util {
             return strBuilder.ToString();
         }
 
-        public static decimal CalcularVariacaoPercentual(decimal ultimoValor, decimal primeiroValor) {
-            if (ultimoValor >= primeiroValor) {
+        public static decimal CalcularVariacaoPercentual(decimal ultimoValor, decimal primeiroValor)
+        {
+            if (ultimoValor >= primeiroValor)
+            {
                 return (ultimoValor - primeiroValor) / primeiroValor * 100;
             }
-            else {
+            else
+            {
                 return -((primeiroValor - ultimoValor) / primeiroValor * 100);
             }
         }
 
-        public static string NumeroParaSiglaMes(int Numero, bool nomeCompleto = false) {
-            switch (Numero) {
+        public static string NumeroParaSiglaMes(int Numero, bool nomeCompleto = false)
+        {
+            switch (Numero)
+            {
                 case 1:
                     return nomeCompleto ? "Janeiro" : "JAN";
                 case 2:
@@ -152,13 +179,16 @@ namespace Util {
             }
         }
 
-        public static object Encrypt(string param) {
+        public static object Encrypt(string param)
+        {
             throw new NotImplementedException();
         }
 
-        public static TokenBuilded TokenGenerate(object objectUser, long id,long company, SigningConfigurations signingConfigurations, TokenConfigurations tokenConfigurations) {
+        public static TokenBuilded TokenGenerate(object objectUser, long id, long company, SigningConfigurations signingConfigurations, TokenConfigurations tokenConfigurations)
+        {
 
-            var tokenUserDto = new TokenObjDto {
+            var tokenUserDto = new TokenObjDto
+            {
                 Username = GetPropertyValue(objectUser, "Email").ToString(),
                 Name = GetPropertyValue(objectUser, "Name").ToString(),
                 Type = Convert.ToInt64(GetPropertyValue(objectUser, "UserTypeId")),
@@ -181,7 +211,8 @@ namespace Util {
             DateTime dataExpiracao = dataCriacao + TimeSpan.FromSeconds(tokenConfigurations.Seconds);
 
             var handler = new JwtSecurityTokenHandler();
-            var securityToken = handler.CreateToken(new SecurityTokenDescriptor {
+            var securityToken = handler.CreateToken(new SecurityTokenDescriptor
+            {
                 Issuer = tokenConfigurations.Issuer,
                 Audience = tokenConfigurations.Audience,
                 SigningCredentials = signingConfigurations.SigningCredentials,
@@ -191,7 +222,8 @@ namespace Util {
             });
             var token = handler.WriteToken(securityToken);
 
-            return new TokenBuilded {
+            return new TokenBuilded
+            {
                 authenticated = true,
                 created = dataCriacao.ToString("yyyy-MM-dd HH:mm:ss"),
                 expiration = dataExpiracao.ToString("yyyy-MM-dd HH:mm:ss"),
@@ -199,7 +231,8 @@ namespace Util {
             };
         }
 
-        public static ExceptionControlled TokenSessionCheck(HttpRequest request, HttpContext httpContext, long? userId = null) {
+        public static ExceptionControlled TokenSessionCheck(HttpRequest request, HttpContext httpContext, long? userId = null)
+        {
             var stream = request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             var handler = new JwtSecurityTokenHandler();
             var jsonToken = handler.ReadToken(stream);
@@ -212,7 +245,8 @@ namespace Util {
             //    return new ExceptionControlled("SERVER_SESSION_EXPIRATED", false, false);
             //}
 
-            if (userId.HasValue ? tokenS.Payload["unique_name"].ToString() != userId.ToString() : false) {
+            if (userId.HasValue ? tokenS.Payload["unique_name"].ToString() != userId.ToString() : false)
+            {
                 return new ExceptionControlled("SERVER_SESSION_EXPIRATED", false, false);
             }
 
@@ -220,7 +254,8 @@ namespace Util {
 
         }
 
-        public static long TokenGetId(HttpRequest request) {
+        public static long TokenGetId(HttpRequest request)
+        {
             var stream = request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             var handler = new JwtSecurityTokenHandler();
             var jsonToken = handler.ReadToken(stream);
@@ -230,43 +265,63 @@ namespace Util {
 
         }
 
-        public static decimal CalcularPercentualComparativo(decimal total, decimal comparativo) {
+        public static UserData TokenGetUser(HttpRequest request)
+        {
+            var stream = request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            var handler = new JwtSecurityTokenHandler();
+            var jsonToken = handler.ReadToken(stream) as JwtSecurityToken;
+            var user = jsonToken?.Payload["User"]?.ToString();
+            var Data = new UserData();
+            Data = JsonConvert.DeserializeObject<UserData>(user);
+            return Data;
+        }
+
+        public static decimal CalcularPercentualComparativo(decimal total, decimal comparativo)
+        {
             return comparativo / total * 100;
         }
 
-        public static string CompleteLeftZeros(string number, int qtdTotalZeros) {
+        public static string CompleteLeftZeros(string number, int qtdTotalZeros)
+        {
             int zerosToAdd = qtdTotalZeros - number.Length;
 
-            for (int i = 0; i < zerosToAdd; i++) {
+            for (int i = 0; i < zerosToAdd; i++)
+            {
                 number = "0" + number;
             }
 
             return number;
         }
 
-        public static string CompleteRightZeros(int qtdTotalZeros, string number = "") {
+        public static string CompleteRightZeros(int qtdTotalZeros, string number = "")
+        {
             int zerosToAdd = qtdTotalZeros - number.Length;
 
             if (zerosToAdd <= 0) return number;
 
-            for (int i = 0; i < zerosToAdd; i++) {
+            for (int i = 0; i < zerosToAdd; i++)
+            {
                 number = number + "0";
             }
 
             return number;
         }
 
-        public static long ConvDecimalToLong(decimal number, int decimalSize) {
+        public static long ConvDecimalToLong(decimal number, int decimalSize)
+        {
             var n = number.ToString();//.Replace(".","").Replace(",","");
             string[] sArray;
 
-            if (n.Contains('.')) {
+            if (n.Contains('.'))
+            {
                 sArray = n.Split('.');
             }
-            else if (n.Contains(',')) {
+            else if (n.Contains(','))
+            {
                 sArray = n.Split(',');
             }
-            else {
+            else
+            {
                 return Convert.ToInt64(n + CompleteRightZeros(decimalSize));
             }
 
@@ -274,32 +329,40 @@ namespace Util {
             //return Convert.ToInt64(n);
         }
 
-        public static decimal ConvLongToDecimal(long number, int decimalSize) {
+        public static decimal ConvLongToDecimal(long number, int decimalSize)
+        {
             var numberToDiv = Convert.ToInt64("1" + CompleteRightZeros(decimalSize));
 
 
             return ((decimal)number) / numberToDiv;
         }
 
-        public static string StringEncrypt(string plainText, string exclusiveKey = "") {
-            try {
+        public static string StringEncrypt(string plainText, string exclusiveKey = "")
+        {
+            try
+            {
                 return StringCipher.Encrypt(plainText, string.IsNullOrWhiteSpace(exclusiveKey) ? "AadfasdASfsah!@#525as1djo9isuhj9d56das" : exclusiveKey);
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 throw new ExceptionControlled("Ocorreu uma falha ao tentar criptografar o texto: '" + plainText + "'", false, false);
             }
         }
 
-        public static string StringDecrypt(string plainText, string exclusiveKey = "") {
-            try {
+        public static string StringDecrypt(string plainText, string exclusiveKey = "")
+        {
+            try
+            {
                 return StringCipher.Decrypt(plainText, string.IsNullOrWhiteSpace(exclusiveKey) ? "AadfasdASfsah!@#525as1djo9isuhj9d56das" : exclusiveKey);
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 throw new ExceptionControlled("Ocorreu uma falha ao tentar decriptografar o texto: '" + plainText + "'", false, false);
             }
         }
 
-        public static object GetPropertyValue(object obj, string propName) {
+        public static object GetPropertyValue(object obj, string propName)
+        {
             Type myType = obj.GetType();
             IList<PropertyInfo> props = new List<PropertyInfo>(myType.GetProperties());
 
@@ -307,9 +370,11 @@ namespace Util {
 
         }
 
-        public static decimal CalculateCoinTransactions(decimal CurrencyFrom, decimal CurrencyTo, decimal Amount) {
+        public static decimal CalculateCoinTransactions(decimal CurrencyFrom, decimal CurrencyTo, decimal Amount)
+        {
 
-            if (CurrencyFrom <= 0 || CurrencyTo <= 0 || Amount <= 0) {
+            if (CurrencyFrom <= 0 || CurrencyTo <= 0 || Amount <= 0)
+            {
                 throw new ExceptionControlled("Calculate Fail", false, false);
             }
             var result = ((CurrencyTo * Amount) / CurrencyFrom);
@@ -321,17 +386,21 @@ namespace Util {
         const string Key = "31031986310319863103198631031986"; // must be 32 character
         const string IV = "3103198631031986"; // must be 16 character
 
-        public static string DecryptPayment(string encryptedText) {
+        public static string DecryptPayment(string encryptedText)
+        {
             encryptedText = encryptedText.Replace(" ", "+");
 
             string plaintext = null;
-            using (AesManaged aes = new AesManaged()) {
+            using (AesManaged aes = new AesManaged())
+            {
                 byte[] cipherText = Convert.FromBase64String(encryptedText);
                 byte[] aesIV = UTF8Encoding.UTF8.GetBytes(IV);
                 byte[] aesKey = UTF8Encoding.UTF8.GetBytes(Key);
                 ICryptoTransform decryptor = aes.CreateDecryptor(aesKey, aesIV);
-                using (MemoryStream ms = new MemoryStream(cipherText)) {
-                    using (CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read)) {
+                using (MemoryStream ms = new MemoryStream(cipherText))
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
+                    {
                         using (StreamReader reader = new StreamReader(cs))
                             plaintext = reader.ReadToEnd();
                     }
@@ -339,7 +408,8 @@ namespace Util {
             }
             return plaintext;
         }
-        public static string EncryptPayment(string message) {
+        public static string EncryptPayment(string message)
+        {
             AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
             aes.BlockSize = 128;
             aes.KeySize = 256;
@@ -348,14 +418,17 @@ namespace Util {
             aes.Mode = CipherMode.CBC;
             aes.Padding = PaddingMode.PKCS7;
             byte[] data = Encoding.UTF8.GetBytes(message);
-            using (ICryptoTransform encrypt = aes.CreateEncryptor()) {
+            using (ICryptoTransform encrypt = aes.CreateEncryptor())
+            {
                 byte[] dest = encrypt.TransformFinalBlock(data, 0, data.Length);
                 return Convert.ToBase64String(dest);
             }
         }
-        public static async Task<string> UploadFileToS3(string keyS3, string secretKeyS3, string bucketName, string base64String, bool compress = false, int defaultCompress = 100, int maxWidth = 500) {
+        public static async Task<string> UploadFileToS3(string keyS3, string secretKeyS3, string bucketName, string base64String, bool compress = false, int defaultCompress = 100, int maxWidth = 500)
+        {
 
-            try {
+            try
+            {
 
                 var basecheck = base64String.Split(",");
                 byte[] bytescheck = Convert.FromBase64String(basecheck[1]);
@@ -368,11 +441,13 @@ namespace Util {
 
                 string[] base64;
 
-                if (compress) {
+                if (compress)
+                {
 
                     base64 = CompressImageBase64(base64String, defaultCompress, maxWidth).Split(",");
                 }
-                else {
+                else
+                {
                     base64 = base64String.Split(",");
                 }
 
@@ -389,11 +464,14 @@ namespace Util {
 
                 // access key id and secret key id, can be generated by navigating to IAM roles in AWS and then add new user, select permissions
                 //for this example, try giving S3 full permissions
-                using (var client = new AmazonS3Client(keyS3, secretKeyS3, RegionEndpoint.USEast1)) {
-                    using (var newMemoryStream = new MemoryStream(bytes)) {
+                using (var client = new AmazonS3Client(keyS3, secretKeyS3, RegionEndpoint.USEast1))
+                {
+                    using (var newMemoryStream = new MemoryStream(bytes))
+                    {
 
 
-                        var uploadRequest = new TransferUtilityUploadRequest {
+                        var uploadRequest = new TransferUtilityUploadRequest
+                        {
                             InputStream = newMemoryStream,
                             Key = randomName, // filename
                             BucketName = bucketName // bucket name of S3
@@ -406,17 +484,22 @@ namespace Util {
                 return randomName;
 
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 throw new ExceptionControlled($"Uploaded Fail{e}", false, false);
             }
 
         }
-        public static void S3DeleteItem(string keyS3, string secretKeyS3, string bucketName, string image) {
+        public static void S3DeleteItem(string keyS3, string secretKeyS3, string bucketName, string image)
+        {
 
-            try {
+            try
+            {
 
-                using (var client = new AmazonS3Client(keyS3, secretKeyS3, RegionEndpoint.USEast1)) {
-                    DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest {
+                using (var client = new AmazonS3Client(keyS3, secretKeyS3, RegionEndpoint.USEast1))
+                {
+                    DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest
+                    {
                         BucketName = bucketName,
                         Key = image
                     };
@@ -426,24 +509,28 @@ namespace Util {
                 }
 
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 throw new ExceptionControlled($"Uploaded Fail{e}", false, false);
             }
 
         }
         private static Random random = new Random();
-        public static string RandomString(int length) {
+        public static string RandomString(int length)
+        {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        public enum ImageQuality : long {
+        public enum ImageQuality : long
+        {
             low = 40L,
             medium = 60L,
             high = 80L,
             none = 100L
         }
-        public static string CompressImageBase64(string base64String, int quality = 100, int maxWidth = 500) {
+        public static string CompressImageBase64(string base64String, int quality = 100, int maxWidth = 500)
+        {
 
             byte[] currentByteImageArray = Convert.FromBase64String(base64String.Split(",")[1]);
 
@@ -455,13 +542,15 @@ namespace Util {
 
             Bitmap fullSizeBitmap = null;
 
-            if (fullsizeImage.Width > maxWidth) {
+            if (fullsizeImage.Width > maxWidth)
+            {
 
                 int newHeight = (maxWidth * fullsizeImage.Height) / fullsizeImage.Width;
                 fullSizeBitmap = new Bitmap(fullsizeImage, new Size((int)(maxWidth), (int)(newHeight)));
 
             }
-            else {
+            else
+            {
                 fullSizeBitmap = new Bitmap(fullsizeImage);
             }
 
@@ -480,17 +569,20 @@ namespace Util {
 
             return base64String.Split(",")[0] + "," + Convert.ToBase64String(currentByteImageArray);
         }
-        public static string RemoveAccents(string text) {
+        public static string RemoveAccents(string text)
+        {
             StringBuilder sbReturn = new StringBuilder();
             var arrayText = text.Normalize(NormalizationForm.FormD).ToCharArray();
-            foreach (char letter in arrayText) {
+            foreach (char letter in arrayText)
+            {
                 if (CharUnicodeInfo.GetUnicodeCategory(letter) != UnicodeCategory.NonSpacingMark)
                     sbReturn.Append(letter);
             }
             return sbReturn.ToString();
         }
 
-        public static async Task<string> CompressVideo([FromForm] IFormFile archive) {
+        public static async Task<string> CompressVideo([FromForm] IFormFile archive)
+        {
             // DOCUMENTACAO
             var newName = Guid.NewGuid().ToString();
 
@@ -498,7 +590,8 @@ namespace Util {
 
             var tempPath = localTemp + archive.FileName;
 
-            using (var stream = new FileStream(tempPath, FileMode.Create)) {
+            using (var stream = new FileStream(tempPath, FileMode.Create))
+            {
                 await archive.CopyToAsync(stream);
             }
 
@@ -526,31 +619,38 @@ namespace Util {
             return newName;
         }
 
-        private static ImageCodecInfo GetImageCodec(ImageFormat formato) {
+        private static ImageCodecInfo GetImageCodec(ImageFormat formato)
+        {
             var codec = ImageCodecInfo.GetImageDecoders().FirstOrDefault(c => c.FormatID == formato.Guid);
             if (codec == null) throw new NotSupportedException();
             return codec;
         }
 
-        public static string EncodeToBase64(string texto) {
-            try {
+        public static string EncodeToBase64(string texto)
+        {
+            try
+            {
                 byte[] textoAsBytes = Encoding.ASCII.GetBytes(texto);
                 string resultado = System.Convert.ToBase64String(textoAsBytes);
                 return resultado;
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 throw;
             }
         }
 
 
-        private static string Base64Encode(string plainText) {
+        private static string Base64Encode(string plainText)
+        {
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
             return System.Convert.ToBase64String(plainTextBytes);
         }
 
-        public static string GerenciaNetAuth(string ClientId, string ClientSecret) {
-            try {
+        public static string GerenciaNetAuth(string ClientId, string ClientSecret)
+        {
+            try
+            {
                 var credencials = new Dictionary<string, string>{
                     {"client_id", "Client_Id_67be0468eafdaa2310d7d9b396b7c114ed83e8c2"},
                     {"client_secret", "Client_Secret_076b500a40619aec79172a7e3569a5c0e483466d"}
@@ -572,7 +672,8 @@ namespace Util {
                 return response;
 
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 throw;
             }
 

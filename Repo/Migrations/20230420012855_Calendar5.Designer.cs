@@ -4,6 +4,7 @@ using Context.Repo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Repo.Migrations
 {
     [DbContext(typeof(ContextApp))]
-    partial class ContextAppModelSnapshot : ModelSnapshot
+    [Migration("20230420012855_Calendar5")]
+    partial class Calendar5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2219,38 +2221,6 @@ namespace Repo.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Domain.Hierarchy", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
-
-                    b.Property<long>("ExecutiveId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("ManagerId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime>("UpdatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ExecutiveId");
-
-                    b.HasIndex("ManagerId");
-
-                    b.ToTable("Hierarchies");
-                });
-
             modelBuilder.Entity("Domain.LanguageTag", b =>
                 {
                     b.Property<long>("Id")
@@ -2592,7 +2562,7 @@ namespace Repo.Migrations
                         {
                             Id = 1L,
                             Abbreviation = "SADM",
-                            CreatedOn = new DateTime(2023, 4, 20, 0, 54, 39, 816, DateTimeKind.Local).AddTicks(1711),
+                            CreatedOn = new DateTime(2023, 4, 19, 22, 28, 54, 732, DateTimeKind.Local).AddTicks(9768),
                             Deleted = false,
                             Name = "Super Admin",
                             UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -2601,7 +2571,7 @@ namespace Repo.Migrations
                         {
                             Id = 2L,
                             Abbreviation = "RP",
-                            CreatedOn = new DateTime(2023, 4, 20, 0, 54, 39, 816, DateTimeKind.Local).AddTicks(1714),
+                            CreatedOn = new DateTime(2023, 4, 19, 22, 28, 54, 732, DateTimeKind.Local).AddTicks(9770),
                             Deleted = false,
                             Name = "Representante",
                             UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -2610,7 +2580,7 @@ namespace Repo.Migrations
                         {
                             Id = 3L,
                             Abbreviation = "ADMF",
-                            CreatedOn = new DateTime(2023, 4, 20, 0, 54, 39, 816, DateTimeKind.Local).AddTicks(1715),
+                            CreatedOn = new DateTime(2023, 4, 19, 22, 28, 54, 732, DateTimeKind.Local).AddTicks(9772),
                             Deleted = false,
                             Name = "Administrador Filial",
                             UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -2625,23 +2595,6 @@ namespace Repo.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Domain.Hierarchy", b =>
-                {
-                    b.HasOne("Domain.User", "Executive")
-                        .WithMany()
-                        .HasForeignKey("ExecutiveId")
-                        .IsRequired();
-
-                    b.HasOne("Domain.User", "Manager")
-                        .WithMany()
-                        .HasForeignKey("ManagerId")
-                        .IsRequired();
-
-                    b.Navigation("Executive");
-
-                    b.Navigation("Manager");
                 });
 
             modelBuilder.Entity("Domain.ProposalHistoricEletric", b =>
