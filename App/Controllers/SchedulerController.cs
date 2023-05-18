@@ -52,10 +52,31 @@ namespace App.Controllers
                 scheduler.CompanyId = userToken.Company;
                 scheduler.UserId = userToken.uID;
                 _context.Add(scheduler);
+
+                var manager = _context.Companies.Where(o => o.Id == userToken.Company).FirstOrDefault();
+                var title = "Nova agenda";
+                var mensage = "Ola! o representante" + userToken.Name + "Criou uma nova agenda";
+
+                if (manager != null)
+                {
+                    var pushKey = _context.PushNotificationKeys.Where(o => o.User.Id == manager.UserId).OrderByDescending(o => o.Id).ToList();
+                    var notify = new Notication()
+                    {
+                        Title = title,
+                        Mensage = mensage,
+                        UserId = (long)manager.UserId,
+                        Read = false,
+                        CreatedOn = DateTime.Now,
+                    };
+                    _context.Add(notify);
+
+                    foreach (var psuh in pushKey)
+                    {
+                        await Tools.Notification(title, mensage, psuh.PushKey);
+                    }
+
+                }
                 _context.SaveChanges();
-
-
-
                 return Ok();
             }
             catch (ExceptionControlled ex)

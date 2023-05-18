@@ -5,27 +5,21 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repo.Migrations
 {
-    public partial class Calendar3 : Migration
+    public partial class cities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Calendars",
+                name: "Cities",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DateInitial = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Contact = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneContact = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Distric = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Distributor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Irradiation = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    LevelIrradiation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Coordinates = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UF = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -33,7 +27,7 @@ namespace Repo.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Calendars", x => x.Id);
+                    table.PrimaryKey("PK_Cities", x => x.Id);
                 });
 
             migrationBuilder.UpdateData(
@@ -41,48 +35,48 @@ namespace Repo.Migrations
                 keyColumn: "Id",
                 keyValue: 1L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 19, 21, 16, 12, 890, DateTimeKind.Local).AddTicks(2576));
+                value: new DateTime(2023, 5, 15, 23, 32, 12, 736, DateTimeKind.Local).AddTicks(415));
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 2L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 19, 21, 16, 12, 890, DateTimeKind.Local).AddTicks(2578));
+                value: new DateTime(2023, 5, 15, 23, 32, 12, 736, DateTimeKind.Local).AddTicks(417));
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 3L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 19, 21, 16, 12, 890, DateTimeKind.Local).AddTicks(2579));
+                value: new DateTime(2023, 5, 15, 23, 32, 12, 736, DateTimeKind.Local).AddTicks(418));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Calendars");
+                name: "Cities");
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 1L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 19, 21, 14, 59, 990, DateTimeKind.Local).AddTicks(3616));
+                value: new DateTime(2023, 5, 15, 21, 48, 51, 67, DateTimeKind.Local).AddTicks(5499));
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 2L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 19, 21, 14, 59, 990, DateTimeKind.Local).AddTicks(3618));
+                value: new DateTime(2023, 5, 15, 21, 48, 51, 67, DateTimeKind.Local).AddTicks(5502));
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 3L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 19, 21, 14, 59, 990, DateTimeKind.Local).AddTicks(3619));
+                value: new DateTime(2023, 5, 15, 21, 48, 51, 67, DateTimeKind.Local).AddTicks(5503));
         }
     }
 }

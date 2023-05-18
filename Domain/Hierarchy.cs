@@ -12,7 +12,6 @@ namespace Domain
     public class Hierarchy : BaseEntityWithId
     {
         [ForeignKey("ManagerId")]
-        [Required]
         public User Manager { get; set; }
         public long ManagerId { get; set; }
 

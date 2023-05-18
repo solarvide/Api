@@ -5,65 +5,72 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repo.Migrations
 {
-    public partial class statususer : Migration
+    public partial class company2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "Status",
-                table: "Users",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.AlterColumn<long>(
+                name: "UserId",
+                table: "Companies",
+                type: "bigint",
+                nullable: true,
+                oldClrType: typeof(long),
+                oldType: "bigint");
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 1L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 18, 21, 34, 6, 560, DateTimeKind.Local).AddTicks(8012));
+                value: new DateTime(2023, 4, 22, 18, 7, 25, 958, DateTimeKind.Local).AddTicks(6165));
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 2L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 18, 21, 34, 6, 560, DateTimeKind.Local).AddTicks(8015));
+                value: new DateTime(2023, 4, 22, 18, 7, 25, 958, DateTimeKind.Local).AddTicks(6167));
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 3L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 18, 21, 34, 6, 560, DateTimeKind.Local).AddTicks(8016));
+                value: new DateTime(2023, 4, 22, 18, 7, 25, 958, DateTimeKind.Local).AddTicks(6168));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Status",
-                table: "Users");
+            migrationBuilder.AlterColumn<long>(
+                name: "UserId",
+                table: "Companies",
+                type: "bigint",
+                nullable: false,
+                defaultValue: 0L,
+                oldClrType: typeof(long),
+                oldType: "bigint",
+                oldNullable: true);
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 1L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 18, 19, 3, 3, 275, DateTimeKind.Local).AddTicks(4935));
+                value: new DateTime(2023, 4, 22, 17, 53, 5, 535, DateTimeKind.Local).AddTicks(3993));
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 2L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 18, 19, 3, 3, 275, DateTimeKind.Local).AddTicks(4937));
+                value: new DateTime(2023, 4, 22, 17, 53, 5, 535, DateTimeKind.Local).AddTicks(3996));
 
             migrationBuilder.UpdateData(
                 table: "UserTypes",
                 keyColumn: "Id",
                 keyValue: 3L,
                 column: "CreatedOn",
-                value: new DateTime(2023, 4, 18, 19, 3, 3, 275, DateTimeKind.Local).AddTicks(4938));
+                value: new DateTime(2023, 4, 22, 17, 53, 5, 535, DateTimeKind.Local).AddTicks(3997));
         }
     }
 }

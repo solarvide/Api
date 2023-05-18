@@ -42,7 +42,7 @@ namespace App.Controllers
 
 
         [HttpPost("Add")]
-        public ActionResult ListUser(ProposalRequestDto request)
+        public ActionResult AddProposal(ProposalRequestDto request)
         {
             try
             {

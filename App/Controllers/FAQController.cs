@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using App.Configurations;
 using Domain;
-using Repo;
 using Util;
 using Context.Repo;
 using APP.Dto.FAQ;

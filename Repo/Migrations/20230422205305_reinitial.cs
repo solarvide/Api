@@ -5,30 +5,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repo.Migrations
 {
-    public partial class initial : Migration
+    public partial class reinitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Companies",
+                name: "CategoriesBlog",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Distric = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UF = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    status = table.Column<bool>(type: "bit", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Deleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Companies", x => x.Id);
+                    table.PrimaryKey("PK_CategoriesBlog", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,6 +55,23 @@ namespace Repo.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Countries", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FAQs",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Question = table.Column<string>(type: "ntext", nullable: false),
+                    Answer = table.Column<string>(type: "ntext", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FAQs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,6 +131,31 @@ namespace Repo.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Blogs",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryId = table.Column<long>(type: "bigint", nullable: false),
+                    CategoryBlogId = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Blogs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Blogs_CategoriesBlog_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "CategoriesBlog",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProposalHistoricEletrics",
                 columns: table => new
                 {
@@ -142,6 +179,46 @@ namespace Repo.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CodeValidations",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ValidationCode = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CodeType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CodeValidations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Companies",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Distric = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UF = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Companies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -157,10 +234,10 @@ namespace Repo.Migrations
                     EmailValidated = table.Column<bool>(type: "bit", nullable: true),
                     UserTypeId = table.Column<long>(type: "bigint", nullable: false),
                     CompanyId = table.Column<long>(type: "bigint", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
                     PhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TwoFactory = table.Column<bool>(type: "bit", nullable: true),
                     TwoFactorySecret = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PinCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Deleted = table.Column<bool>(type: "bit", nullable: false)
@@ -181,22 +258,51 @@ namespace Repo.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CodeValidations",
+                name: "Hierarchies",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ValidationCode = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CodeType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<long>(type: "bigint", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ManagerId = table.Column<long>(type: "bigint", nullable: false),
+                    ExecutiveId = table.Column<long>(type: "bigint", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CodeValidations", x => x.Id);
+                    table.PrimaryKey("PK_Hierarchies", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CodeValidations_Users_UserId",
+                        name: "FK_Hierarchies_Users_ExecutiveId",
+                        column: x => x.ExecutiveId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Hierarchies_Users_ManagerId",
+                        column: x => x.ManagerId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notications",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Mensage = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Read = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Notications_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
@@ -225,12 +331,51 @@ namespace Repo.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Schedulers",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompanyId = table.Column<long>(type: "bigint", nullable: false),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    DateInitial = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Contact = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneContact = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Distric = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UF = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Schedulers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Schedulers_Companies_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Companies",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Schedulers_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "ConfigurationTags",
                 columns: new[] { "Id", "Description", "Tag", "Value" },
                 values: new object[,]
                 {
-                    { 1L, "default_user_type_id", "default_user_type_id", "1" },
+                    { 1L, "default_user_type_id", "default_user_type_id", "2" },
                     { 2L, "default_user_type_abreviations", "default_user_type_abreviations", "RP" },
                     { 3L, "default_percent_compress", "default_percent_compress", "60" }
                 });
@@ -543,14 +688,39 @@ namespace Repo.Migrations
                 columns: new[] { "Id", "Abbreviation", "CreatedOn", "Deleted", "Name", "UpdatedOn" },
                 values: new object[,]
                 {
-                    { 1L, "SADM", new DateTime(2023, 4, 18, 18, 34, 15, 181, DateTimeKind.Local).AddTicks(6652), false, "Super Admin", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2L, "RP", new DateTime(2023, 4, 18, 18, 34, 15, 181, DateTimeKind.Local).AddTicks(6809), false, "Representante", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3L, "ADMF", new DateTime(2023, 4, 18, 18, 34, 15, 181, DateTimeKind.Local).AddTicks(6810), false, "Administrador Filial", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1L, "SADM", new DateTime(2023, 4, 22, 17, 53, 5, 535, DateTimeKind.Local).AddTicks(3993), false, "Super Admin", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2L, "RP", new DateTime(2023, 4, 22, 17, 53, 5, 535, DateTimeKind.Local).AddTicks(3996), false, "Representante", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3L, "ADMF", new DateTime(2023, 4, 22, 17, 53, 5, 535, DateTimeKind.Local).AddTicks(3997), false, "Administrador Filial", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Blogs_CategoryId",
+                table: "Blogs",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CodeValidations_UserId",
                 table: "CodeValidations",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Companies_UserId",
+                table: "Companies",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Hierarchies_ExecutiveId",
+                table: "Hierarchies",
+                column: "ExecutiveId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Hierarchies_ManagerId",
+                table: "Hierarchies",
+                column: "ManagerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Notications_UserId",
+                table: "Notications",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -564,6 +734,16 @@ namespace Repo.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Schedulers_CompanyId",
+                table: "Schedulers",
+                column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Schedulers_UserId",
+                table: "Schedulers",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_CompanyId",
                 table: "Users",
                 column: "CompanyId");
@@ -572,10 +752,31 @@ namespace Repo.Migrations
                 name: "IX_Users_UserTypeId",
                 table: "Users",
                 column: "UserTypeId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_CodeValidations_Users_UserId",
+                table: "CodeValidations",
+                column: "UserId",
+                principalTable: "Users",
+                principalColumn: "Id");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Companies_Users_UserId",
+                table: "Companies",
+                column: "UserId",
+                principalTable: "Users",
+                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Companies_Users_UserId",
+                table: "Companies");
+
+            migrationBuilder.DropTable(
+                name: "Blogs");
+
             migrationBuilder.DropTable(
                 name: "CodeValidations");
 
@@ -586,13 +787,28 @@ namespace Repo.Migrations
                 name: "Countries");
 
             migrationBuilder.DropTable(
+                name: "FAQs");
+
+            migrationBuilder.DropTable(
+                name: "Hierarchies");
+
+            migrationBuilder.DropTable(
                 name: "LanguageTags");
+
+            migrationBuilder.DropTable(
+                name: "Notications");
 
             migrationBuilder.DropTable(
                 name: "ProposalHistoricEletrics");
 
             migrationBuilder.DropTable(
                 name: "PushNotificationKeys");
+
+            migrationBuilder.DropTable(
+                name: "Schedulers");
+
+            migrationBuilder.DropTable(
+                name: "CategoriesBlog");
 
             migrationBuilder.DropTable(
                 name: "Proposal");

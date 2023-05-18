@@ -205,7 +205,7 @@ namespace ZionSystemApp.Controllers
         }
 
 
-  
+
         [AllowAnonymous]
         [HttpPost("SignUp")]
         public async Task<ActionResult<UserSessionResponseDto>> SignUp([FromBody] UserSignUpRequestDto request, [FromServices] SigningConfigurations signingConfigurations, [FromServices] TokenConfigurations tokenConfigurations)
@@ -223,9 +223,9 @@ namespace ZionSystemApp.Controllers
 
                 var checkDocnumber = _context.Users.Where(o => o.DocNumber == document).FirstOrDefault();
 
-                var checkCompany = _context.Companies.Where(o => o.Id == request.CompanyId).FirstOrDefault();
+                var company = _context.Companies.Where(o => o.Id == request.CompanyId).FirstOrDefault();
 
-                if(checkCompany == null)
+                if (company == null)
                 {
                     throw new ExceptionControlled("Company Invalid ", false, false);
                 }
@@ -246,7 +246,7 @@ namespace ZionSystemApp.Controllers
                     throw new ExceptionControlled(msg1, msg2);
                 }
 
-                if(request.UploadDoc !=null)
+                if (request.UploadDoc != null)
                 {
                     var docimgUrl = await Tools.UploadFileToS3(_settingsApp.AwsS3.KeyS3, _settingsApp.AwsS3.SecretKeyS3, _settingsApp.AwsS3.BucketName, request.UploadDoc, true, Convert.ToInt32(ConfigTag.GetValue("default_percent_compress")));
                     request.UploadDoc = docimgUrl;
@@ -258,7 +258,7 @@ namespace ZionSystemApp.Controllers
                     var imgUrl = await Tools.UploadFileToS3(_settingsApp.AwsS3.KeyS3, _settingsApp.AwsS3.SecretKeyS3, _settingsApp.AwsS3.BucketName, request.PhotoUrl, true, Convert.ToInt32(ConfigTag.GetValue("default_percent_compress")));
                     request.PhotoUrl = imgUrl;
                 }
-             
+
 
                 var oUser = _mapper.Map<UserSignUpRequestDto, User>(request);
 
@@ -286,9 +286,18 @@ namespace ZionSystemApp.Controllers
                     CodeType = "SingUp"
                 });
 
-                _context.Users.Add(oUser);
 
+               
+                _context.Users.Add(oUser);
+            
                 await _context.SaveChangesAsync();
+
+                _context.Add(new Hierarchy()
+                {
+                    ManagerId = (long)company.UserId,
+                    ExecutiveId = oUser.Id
+                });
+                _context.SaveChanges();
 
                 await SendVerifyEmail(oUser, code);
 
@@ -296,7 +305,7 @@ namespace ZionSystemApp.Controllers
                 var resultMapped = new ContainedResponseUserDto()
                 {
                     User = _mapper.Map<User, UserDefaultResponseDto>(oUser),
-                    Token = Tools.TokenGenerate(oUser, oUser.Id,oUser.CompanyId, signingConfigurations, tokenConfigurations)
+                    Token = Tools.TokenGenerate(oUser, oUser.Id, oUser.CompanyId, signingConfigurations, tokenConfigurations)
                 };
 
                 return Ok(resultMapped);
@@ -322,7 +331,7 @@ namespace ZionSystemApp.Controllers
                 string senhaCritografada = Tools.MD5Hash(request.Password.Trim());
                 var oUser = _context.Users
                    .Include(o => o.UserType)
-                   .Include(o=>o.Company)
+                   //.Include(o => o.Company)
                    .Include(o => o.PushNotificationKeys)
                    .Where(o => !o.Deleted && o.Email.Trim() == request.Email.Trim() && o.Password == senhaCritografada).FirstOrDefault();
 
@@ -372,7 +381,7 @@ namespace ZionSystemApp.Controllers
                 var resultMapped = new ContainedResponseUserDto()
                 {
                     User = _mapper.Map<User, UserDefaultResponseDto>(oUser),
-                    Token = Tools.TokenGenerate(oUser, oUser.Id,oUser.CompanyId,signingConfigurations, tokenConfigurations)
+                    Token = Tools.TokenGenerate(oUser, oUser.Id, oUser.CompanyId, signingConfigurations, tokenConfigurations)
                 };
 
                 return Ok(resultMapped);
@@ -672,7 +681,7 @@ namespace ZionSystemApp.Controllers
                 throw new ExceptionControlled(msg1, msg2);
             }
 
-            oUser.Deleted = true; 
+            oUser.Deleted = true;
 
             oUser.UpdatedOn = DateTime.Now;
 
@@ -752,7 +761,7 @@ namespace ZionSystemApp.Controllers
 
                 gauth.setSecretKey(HashKey);
 
-                var ImageUrl = "data:image/png;base64,"+gauth.QRCodeUrl;
+                var ImageUrl = "data:image/png;base64," + gauth.QRCodeUrl;
 
                 oUser.TwoFactory = true;
 

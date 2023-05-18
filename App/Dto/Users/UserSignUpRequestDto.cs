@@ -12,7 +12,7 @@ namespace App.DtoUsers
         public string SurName { get; set; }
 
         public string DocNumber { get; set; }
-        public string UploadDoc { get; set; }
+        public string? UploadDoc { get; set; }
 
         public DateTime? Birthday { get; set; }
 
