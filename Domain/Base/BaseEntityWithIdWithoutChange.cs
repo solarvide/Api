@@ -14,7 +14,5 @@ namespace Domain.Base {
         public long Id { get; set; }
         public DateTime CreatedOn { get; set; }
 
-
-
     }
 }

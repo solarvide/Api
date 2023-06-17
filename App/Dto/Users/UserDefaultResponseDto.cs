@@ -1,4 +1,5 @@
 ﻿
+using App.Dto.Company;
 using System.Text.Json.Serialization;
 
 namespace App.DtoUsers {
@@ -24,9 +25,7 @@ namespace App.DtoUsers {
         public DateTime Birthday { get; set; }
 
         public bool? TwoFactory { get; set; }
-
-
-        [JsonIgnore]
+        public CompanyResponseBasicDto Company { get; set; }
         public UserTypeResponseDto UserType { get; set; }
 
 

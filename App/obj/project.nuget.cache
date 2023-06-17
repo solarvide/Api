@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uzs8zD0Oy3YGoayJVwfGLg/jYbpXOoHGsjc6OUWAjVJaRVnkTyFf+czpSfXws0L3ru62+Msz+Fx1fUkBEUJmjQ==",
+  "dgSpecHash": "LHDQUPOUExF8dM3g1S79ia1QUaxrydj57aseUhHT/6oPxyZWNR6rcK6FCP2zUHXqibI8aSmX7sCIOuQGyds8EA==",
   "success": true,
   "projectFilePath": "D:\\Documents\\Agencia Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar Vide\\App\\App\\App.csproj",
   "expectedPackageFiles": [
@@ -148,11 +148,7 @@
     "C:\\Users\\jonat\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\jonat\\.nuget\\packages\\xabe.ffmpeg\\5.1.0\\xabe.ffmpeg.5.1.0.nupkg.sha512",
-    "C:\\Users\\jonat\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.13\\microsoft.netcore.app.host.win-x64.6.0.13.nupkg.sha512",
-    "C:\\Users\\jonat\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.13\\microsoft.aspnetcore.app.ref.6.0.13.nupkg.sha512",
-    "C:\\Users\\jonat\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.13\\microsoft.windowsdesktop.app.ref.6.0.13.nupkg.sha512",
-    "C:\\Users\\jonat\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.13\\microsoft.netcore.app.ref.6.0.13.nupkg.sha512"
+    "C:\\Users\\jonat\\.nuget\\packages\\xabe.ffmpeg\\5.1.0\\xabe.ffmpeg.5.1.0.nupkg.sha512"
   ],
   "logs": [
     {

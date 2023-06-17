@@ -3,7 +3,4 @@
   <parameter name="IIS Web Application Name" description="" value="SolarVide" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Documents\\Agencia\ Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar\ Vide\\App\\App\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
   </parameter>
-  <parameter name="Context.Repo.ContextApp" description="" value="Password=y1l6oSy3z0bbf6IJwKPo;Persist Security Info=True;User ID=sa;Initial Catalog=SolarVide;Data Source=EC2AMAZ-J8152IC\SQLEXPRESS" tags="dbfullsql">
-    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^D:\\Documents\\Agencia\ Artilharia\\Clientes\\Fszion\\Projetos\\Clientes\\Solar\ Vide\\App\\App\\obj\\Release\\net6\.0\\PubTmp\\EFSQLScripts\\Context\.Repo\.ContextApp\.sql$" />
-  </parameter>
 </parameters>

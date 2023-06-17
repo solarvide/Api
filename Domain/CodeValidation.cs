@@ -16,7 +16,6 @@ namespace Domain {
         [ForeignKey("UserId")]
         public User User { get; set; }
         public long UserId { get; set; }
-       
-
+      
     }
 }

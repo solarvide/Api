@@ -37,10 +37,20 @@ namespace Domain
         [Required]
         public UserType UserType { get; set; }
         public long UserTypeId { get; set; }
+
+        [ForeignKey("CompanyId")]
+        [Required]
+        public Company Company  { get; set; }
+        public long CompanyId { get; set; }
+        /// <summary>
+        /// 0- Pending approval
+        /// 1- Approved
+        /// 2- Not Approved
+        /// </summary>
+        public int  Status { get; set; }
         public string? PhotoUrl { get; set; }
         public bool? TwoFactory { get; set; }
         public string? TwoFactorySecret { get; set; }
-        public string? PinCode { get; set; }
         public virtual ICollection<CodeValidation> CodeValidations { get; set; }
     }
 }

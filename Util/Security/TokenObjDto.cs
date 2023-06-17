@@ -15,6 +15,7 @@ namespace Util.Security
         public string Name { get; set; }
 
         public long Type { get; set; }
+        public long Company { get; set; }
 
     }
 }

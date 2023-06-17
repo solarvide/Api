@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Repo.Migrations
 {
     [DbContext(typeof(ContextApp))]
-    [Migration("20230117224556_configurationTag")]
-    partial class configurationTag
+    [Migration("20230422210726_company2")]
+    partial class company2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,78 @@ namespace Repo.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Domain.Blog", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("CategoryBlogId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CategoryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("Domain.CategoryBlog", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoriesBlog");
+                });
 
             modelBuilder.Entity("Domain.CodeValidation", b =>
                 {
@@ -55,6 +127,61 @@ namespace Repo.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("CodeValidations");
+                });
+
+            modelBuilder.Entity("Domain.Company", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Distric")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UF")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("Domain.ConfigurationTag", b =>
@@ -90,14 +217,14 @@ namespace Repo.Migrations
                             Id = 1L,
                             Description = "default_user_type_id",
                             Tag = "default_user_type_id",
-                            Value = "1"
+                            Value = "2"
                         },
                         new
                         {
                             Id = 2L,
                             Description = "default_user_type_abreviations",
                             Tag = "default_user_type_abreviations",
-                            Value = "MB"
+                            Value = "RP"
                         },
                         new
                         {
@@ -2171,6 +2298,68 @@ namespace Repo.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Domain.FAQ", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("ntext");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasColumnType("ntext");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FAQs");
+                });
+
+            modelBuilder.Entity("Domain.Hierarchy", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<long>("ExecutiveId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ManagerId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExecutiveId");
+
+                    b.HasIndex("ManagerId");
+
+                    b.ToTable("Hierarchies");
+                });
+
             modelBuilder.Entity("Domain.LanguageTag", b =>
                 {
                     b.Property<long>("Id")
@@ -2204,6 +2393,124 @@ namespace Repo.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LanguageTags");
+                });
+
+            modelBuilder.Entity("Domain.Notication", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Mensage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Read")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notications");
+                });
+
+            modelBuilder.Entity("Domain.Proposal", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Archive")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Average")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("WhatsApp")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Proposal");
+                });
+
+            modelBuilder.Entity("Domain.ProposalHistoricEletric", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Month")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Value")
+                        .HasMaxLength(4000)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<long>("proposalId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("proposalId");
+
+                    b.ToTable("ProposalHistoricEletrics");
                 });
 
             modelBuilder.Entity("Domain.PushNotificationKey", b =>
@@ -2241,6 +2548,84 @@ namespace Repo.Migrations
                     b.ToTable("PushNotificationKeys");
                 });
 
+            modelBuilder.Entity("Domain.Scheduler", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("CompanyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Contact")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateInitial")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Distric")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneContact")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UF")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Schedulers");
+                });
+
             modelBuilder.Entity("Domain.User", b =>
                 {
                     b.Property<long>("Id")
@@ -2251,6 +2636,9 @@ namespace Repo.Migrations
 
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
+
+                    b.Property<long>("CompanyId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -2287,8 +2675,8 @@ namespace Repo.Migrations
                     b.Property<string>("PhotoUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PinCode")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("SurName")
                         .HasMaxLength(255)
@@ -2307,6 +2695,8 @@ namespace Repo.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("UserTypeId");
 
@@ -2348,21 +2738,40 @@ namespace Repo.Migrations
                         new
                         {
                             Id = 1L,
-                            Abbreviation = "MB",
-                            CreatedOn = new DateTime(2023, 1, 17, 19, 45, 56, 37, DateTimeKind.Local).AddTicks(7474),
+                            Abbreviation = "SADM",
+                            CreatedOn = new DateTime(2023, 4, 22, 18, 7, 25, 958, DateTimeKind.Local).AddTicks(6165),
                             Deleted = false,
-                            Name = "Membro",
+                            Name = "Super Admin",
                             UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2L,
-                            Abbreviation = "ADM",
-                            CreatedOn = new DateTime(2023, 1, 17, 19, 45, 56, 37, DateTimeKind.Local).AddTicks(7476),
+                            Abbreviation = "RP",
+                            CreatedOn = new DateTime(2023, 4, 22, 18, 7, 25, 958, DateTimeKind.Local).AddTicks(6167),
                             Deleted = false,
-                            Name = "Adminitrator",
+                            Name = "Representante",
+                            UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Abbreviation = "ADMF",
+                            CreatedOn = new DateTime(2023, 4, 22, 18, 7, 25, 958, DateTimeKind.Local).AddTicks(6168),
+                            Deleted = false,
+                            Name = "Administrador Filial",
                             UpdatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
+                });
+
+            modelBuilder.Entity("Domain.Blog", b =>
+                {
+                    b.HasOne("Domain.CategoryBlog", "CategoryBlog")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .IsRequired();
+
+                    b.Navigation("CategoryBlog");
                 });
 
             modelBuilder.Entity("Domain.CodeValidation", b =>
@@ -2375,6 +2784,52 @@ namespace Repo.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Domain.Company", b =>
+                {
+                    b.HasOne("Domain.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Hierarchy", b =>
+                {
+                    b.HasOne("Domain.User", "Executive")
+                        .WithMany()
+                        .HasForeignKey("ExecutiveId")
+                        .IsRequired();
+
+                    b.HasOne("Domain.User", "Manager")
+                        .WithMany()
+                        .HasForeignKey("ManagerId")
+                        .IsRequired();
+
+                    b.Navigation("Executive");
+
+                    b.Navigation("Manager");
+                });
+
+            modelBuilder.Entity("Domain.Notication", b =>
+                {
+                    b.HasOne("Domain.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.ProposalHistoricEletric", b =>
+                {
+                    b.HasOne("Domain.Proposal", "proposal")
+                        .WithMany()
+                        .HasForeignKey("proposalId")
+                        .IsRequired();
+
+                    b.Navigation("proposal");
+                });
+
             modelBuilder.Entity("Domain.PushNotificationKey", b =>
                 {
                     b.HasOne("Domain.User", "User")
@@ -2385,12 +2840,36 @@ namespace Repo.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Domain.Scheduler", b =>
+                {
+                    b.HasOne("Domain.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .IsRequired();
+
+                    b.HasOne("Domain.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .IsRequired();
+
+                    b.Navigation("Company");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Domain.User", b =>
                 {
+                    b.HasOne("Domain.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .IsRequired();
+
                     b.HasOne("Domain.UserType", "UserType")
                         .WithMany()
                         .HasForeignKey("UserTypeId")
                         .IsRequired();
+
+                    b.Navigation("Company");
 
                     b.Navigation("UserType");
                 });

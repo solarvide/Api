@@ -6,15 +6,17 @@ namespace App.DtoUsers
 {
     public class UserSignUpRequestDto
     {
+        public long CompanyId { get; set; }
         public string Name { get; set; }
 
-        public string? SurName { get; set; }
+        public string SurName { get; set; }
 
-        public string? DocNumber { get; set; }
+        public string DocNumber { get; set; }
+        public string? UploadDoc { get; set; }
 
         public DateTime? Birthday { get; set; }
 
-        public string? Phone { get; set; }
+        public string Phone { get; set; }
 
         public long? CountryId { get; set; }
 
@@ -37,9 +39,8 @@ namespace App.DtoUsers
         public bool? TwoFactory { get; set; }
         public string? PublicIp { get; set; }
         public string? PhotoUrl { get; set; }
-
         [JsonIgnore]
-        public string? Pincode { get; set; }
+        public int Status { get; set; }
 
     }
 
