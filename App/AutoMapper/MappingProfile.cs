@@ -8,6 +8,7 @@ using App.Dto.Scheduler;
 using App.Dto.Users;
 using APP.Dto.FAQ;
 using App.Dto.Blog;
+using App.Dto.Cities;
 
 namespace AutoMapper {
     public class MappingProfile : Profile {
@@ -19,6 +20,7 @@ namespace AutoMapper {
             CreateMap<FAQ, FAQListResponseDto>();
             CreateMap<FAQDefaultRequestDto, FAQ>();
             CreateMap<Blog, BlogListResponseDto>();
+            CreateMap<Cities, CitiesResponseDto>();
            
             CreateMap<UserDefaultRequestDto, User>();
             CreateMap<UserUpdateDefaultRequestDto, User>();

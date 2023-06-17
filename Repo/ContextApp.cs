@@ -74,6 +74,31 @@ namespace Context.Repo
                     Deleted = false,
                     Name = "Brazil",
                 });
+            modelBuilder.Entity<NetworkEnergy>().HasData(
+               new NetworkEnergy
+               {
+                   Id = 1,
+                   InstalationType = "Monofásico",
+                   MinimalkWh = 30,
+               },
+                new NetworkEnergy
+                {
+                    Id = 2,
+                    InstalationType = "Bifásico",
+                    MinimalkWh = 50,
+                },
+                new NetworkEnergy
+                {
+                    Id = 3,
+                    InstalationType = "Trifásico",
+                    MinimalkWh = 100,
+                },
+                new NetworkEnergy
+                {
+                    Id = 4,
+                    InstalationType = "A4",
+                    MinimalkWh = 0,
+                });
 
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
@@ -94,6 +119,8 @@ namespace Context.Repo
             modelBuilder.Entity<Notication>();
             modelBuilder.Entity<Proposal>();
             modelBuilder.Entity<Cities>();
+            modelBuilder.Entity<NetworkEnergy>();
+            //modelBuilder.Entity<BlogUserRead>();
 
             base.OnModelCreating(modelBuilder);
         }
@@ -115,8 +142,10 @@ namespace Context.Repo
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Notication> Notications { get; set; }
         public DbSet<Cities> Cities { get; set; }
+        public DbSet<NetworkEnergy> NetworkEnergies { get; set; }
 
         public DbSet<ProposalHistoricEletric> ProposalHistoricEletrics { get; set; }
         public DbSet<Proposal> Proposal { get; set; }
+        //public DbSet<BlogUserRead> BlogUserReads { get; set; }
     }
 }
