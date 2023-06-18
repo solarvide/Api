@@ -9,19 +9,34 @@ using App.Dto.Users;
 using APP.Dto.FAQ;
 using App.Dto.Blog;
 using App.Dto.Cities;
+using App.Dto.CategoryBlog;
+using App.Dto.Notification;
 
-namespace AutoMapper {
-    public class MappingProfile : Profile {
-        public MappingProfile() {
+namespace AutoMapper
+{
+    public class MappingProfile : Profile
+    {
+        public MappingProfile()
+        {
+            CreateMap<Blog, BlogListResponseDto>();
+
+            CreateMap<CategoryBlog, CategoryBlogResponseDto>();
+            CreateMap<Cities, CitiesResponseDto>();
+            CreateMap<Cities, CitiesResponseDto>();
             CreateMap<Company, CompanyResponseBasicDto>();
             CreateMap<Company, CompanyCitiesResponseDto>();
-            CreateMap<SchedulerRequestDto, Scheduler>();
-            CreateMap<Scheduler, SchedulerResponseDto>();
+
             CreateMap<FAQ, FAQListResponseDto>();
             CreateMap<FAQDefaultRequestDto, FAQ>();
-            CreateMap<Blog, BlogListResponseDto>();
-            CreateMap<Cities, CitiesResponseDto>();
-           
+
+            CreateMap<Notification, NotificationListResponseDto>();
+
+            CreateMap<ProposalResponseDto, Proposal>();
+            CreateMap<Proposal, ProposalResponseDto>();
+
+            CreateMap<SchedulerRequestDto, Scheduler>();
+            CreateMap<Scheduler, SchedulerResponseDto>();
+
             CreateMap<UserDefaultRequestDto, User>();
             CreateMap<UserUpdateDefaultRequestDto, User>();
             CreateMap<User, UserUpdateDefaultRequestDto>();
@@ -29,9 +44,7 @@ namespace AutoMapper {
             CreateMap<User, UserDefaultResponseDto>();
             CreateMap<User, UserBasicResponseDto>();
             CreateMap<UserType, UserTypeResponseDto>();
-            CreateMap<ProposalResponseDto, Proposal>();
-            CreateMap<Proposal, ProposalResponseDto > ();
-          
+
         }
     }
 }

@@ -17,9 +17,9 @@ namespace Domain
         public string Title { get; set; }
         public string Text { get; set; }
 
-        [ForeignKey("CategoryId")]
+        [ForeignKey("CategoryBlogId")]
         public CategoryBlog CategoryBlog { get; set; }
         public long CategoryBlogId { get; set; }
-      
+
     }
 }

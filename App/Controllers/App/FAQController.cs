@@ -9,7 +9,7 @@ using APP.Dto.FAQ;
 
 namespace App.Controllers.App
 {
-    [Route("api/[controller]/app")]
+    [Route("api/[controller]/App")]
     [ApiController]
     public class FAQController : ControllerBase
     {

@@ -11,7 +11,7 @@ using Util;
 
 namespace App.Controllers.App
 {
-    [Route("api/[controller]/app")]
+    [Route("api/[controller]/App")]
     [ApiController]
     public class SchedulerController : Controller
     {
@@ -60,7 +60,7 @@ namespace App.Controllers.App
                 if (manager != null)
                 {
                     var pushKey = _context.PushNotificationKeys.Where(o => o.User.Id == manager.UserId).OrderByDescending(o => o.Id).ToList();
-                    var notify = new Notication()
+                    var notify = new NotificationScheduler()
                     {
                         Title = title,
                         Mensage = mensage,

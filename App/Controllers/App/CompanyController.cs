@@ -11,7 +11,7 @@ using Util;
 
 namespace App.Controllers.App
 {
-    [Route("api/[controller]/app")]
+    [Route("api/[controller]/App")]
     [ApiController]
     public class CompanyController : ControllerBase
     {
@@ -27,7 +27,7 @@ namespace App.Controllers.App
         }
 
         [AllowAnonymous]
-        [HttpGet("ListCompanyCity/")]
+        [HttpGet]
         public ActionResult<List<CompanyCitiesResponseDto>> ListCompanyCities()
         {
             try

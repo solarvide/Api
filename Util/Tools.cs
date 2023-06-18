@@ -44,7 +44,20 @@ namespace Util
             public int Company { get; set; }
         }
         static Configuration _configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
+        public class Paginate
+        {
+            public int TotalPage { get; set; }
+            public double TotalRegister { get; set; }
+            public double Skip { get; set; }
+        }
+        public class SuccessControlled
+        {
+            public bool Status { get; set; } = true;
+            public Paginate? Paginate { get; set; }
+            public string Code { get; set; } = "success";
+            public string? BaseUrlimage { get; set; }
+            public object? Data { get; set; }
+        }
         public static string GetAppSetting(string key)
         {
             KeyValueConfigurationElement element = _configuration.AppSettings.Settings[key];

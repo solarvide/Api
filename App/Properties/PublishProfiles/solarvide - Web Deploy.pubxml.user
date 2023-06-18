@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Esse arquivo é usado pelo processo de publicação/pacote do seu projeto Web. É possível personalizar o comportamento deste processo
+ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9HbRfOstTEeIm3KvdlrjogAAAAACAAAAAAAQZgAAAAEAACAAAAA+0anspzpPD6TAye9BYmnSb/oURkaxxBy1KdkLnhO3YAAAAAAOgAAAAAIAACAAAACW3vQEX+70zHLXUftCrsWTl09Po7XJmSKhTid20Qf1xYAAAAB3Lkn3E7UH8NDjh7Uw4sGtEvfmbFbSvCrRz3NRab8HGlTw5HH34ncI0SofT56ZQfCb521154l3k3WinSNM17o/FETsyckAqE/3VRSdTGfy/0BQrkC6JZ6xKrlP5P8JBeE5do2IFv7Cc5ax/XzHpw6kvdim/l/rgXl+2vFmQvd9IUAAAABs49QDh+b79zh6l1k5OL5aGzDRrLEFQyivZVq6QG+0+kGeSAl6fpYAlN4APNpLLQ1AsGgbI05bjz6yzrYArIPb</EncryptedPassword>
+    <History>False|2023-06-18T16:31:48.4130908Z;False|2023-06-18T13:27:09.9463921-03:00;False|2023-06-18T13:17:21.5215826-03:00;False|2023-06-18T13:16:40.0948513-03:00;False|2023-06-18T13:15:52.0631419-03:00;False|2023-06-18T13:13:49.2051439-03:00;False|2023-06-18T13:13:07.1156709-03:00;False|2023-06-18T13:08:41.4910431-03:00;False|2023-06-18T12:59:26.1880931-03:00;False|2023-06-18T12:58:56.4401653-03:00;False|2023-06-18T12:44:27.3641757-03:00;True|2023-06-18T12:08:11.6096589-03:00;False|2023-06-18T02:57:44.9921948-03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="ConnectionDB">
+      <Value>Server=tcp:solarvide.database.windows.net,1433%3bInitial Catalog=SolarVide%3bPersist Security Info=False%3bUser ID=solarvide%3bPassword=l3qSTJlev3XFAISCM5qm%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=50%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Context.Repo.ContextApp">
+      <Value>Server=tcp:solarvide.database.windows.net,1433%3bInitial Catalog=SolarVide%3bPersist Security Info=False%3bUser ID=solarvide%3bPassword=l3qSTJlev3XFAISCM5qm%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=50%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

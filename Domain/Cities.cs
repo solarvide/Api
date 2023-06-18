@@ -1,6 +1,7 @@
 ﻿using Domain.Base;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,6 @@ namespace Domain
         public decimal Irradiation { get; set; }
         public string LevelIrradiation { get; set; }
         public string Coordinates { get; set; }
-        public int RatekWh { get; set; }
         public string UF { get; set; }
     }
 }

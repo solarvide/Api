@@ -116,11 +116,13 @@ namespace Context.Repo
             modelBuilder.Entity<FAQ>();
             modelBuilder.Entity<CategoryBlog>();
             modelBuilder.Entity<Blog>();
-            modelBuilder.Entity<Notication>();
+            modelBuilder.Entity<NotificationScheduler>();
             modelBuilder.Entity<Proposal>();
             modelBuilder.Entity<Cities>();
             modelBuilder.Entity<NetworkEnergy>();
-            //modelBuilder.Entity<BlogUserRead>();
+            modelBuilder.Entity<BlogUserRead>();
+            modelBuilder.Entity<NotificationUsers>();
+            modelBuilder.Entity<Notification>();
 
             base.OnModelCreating(modelBuilder);
         }
@@ -140,12 +142,14 @@ namespace Context.Repo
         public DbSet<FAQ> FAQs { get; set; }
         public DbSet<CategoryBlog> CategoriesBlog { get; set; }
         public DbSet<Blog> Blogs { get; set; }
-        public DbSet<Notication> Notications { get; set; }
+        public DbSet<NotificationScheduler> Notications { get; set; }
         public DbSet<Cities> Cities { get; set; }
         public DbSet<NetworkEnergy> NetworkEnergies { get; set; }
 
         public DbSet<ProposalHistoricEletric> ProposalHistoricEletrics { get; set; }
         public DbSet<Proposal> Proposal { get; set; }
-        //public DbSet<BlogUserRead> BlogUserReads { get; set; }
+        public DbSet<BlogUserRead> BlogUserReads { get; set; }
+        public DbSet<NotificationUsers> NotificationUsers { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
     }
 }
